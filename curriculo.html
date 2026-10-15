@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículo / 履歴書 | 田村工業</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #1a5fa8;
+      color: #fff;
+      padding: 20px 16px;
+      text-align: center;
+    }
+    header h1 { font-size: 22px; font-weight: bold; letter-spacing: 0.05em; }
+    header p { font-size: 13px; margin-top: 4px; opacity: 0.85; }
+
+    .container {
+      max-width: 680px;
+      margin: 24px auto;
+      padding: 0 16px 60px;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: bold;
+      color: #1a5fa8;
+      border-left: 4px solid #1a5fa8;
+      padding-left: 10px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .field { margin-bottom: 16px; }
+
+    label {
+      display: block;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+    label .pt { font-weight: bold; color: #333; }
+    label .jp { color: #999; margin-left: 6px; font-size: 11px; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="number"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d0d7e2;
+      border-radius: 6px;
+      font-size: 15px;
+      background: #fafbfd;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #1a5fa8;
+      background: #fff;
+    }
+
+    .field-row {
+      display: flex;
+      gap: 12px;
+    }
+    .field-row .field { flex: 1; }
+
+    .radio-group, .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .radio-group label, .checkbox-group label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: #333;
+      cursor: pointer;
+      background: #f0f4fb;
+      padding: 7px 12px;
+      border-radius: 6px;
+      border: 1px solid #d0d7e2;
+    }
+    .radio-group label:has(input:checked),
+    .checkbox-group label:has(input:checked) {
+      background: #e0eaf8;
+      border-color: #1a5fa8;
+      color: #1a5fa8;
+    }
+    .radio-group input, .checkbox-group input { accent-color: #1a5fa8; }
+
+    .photo-upload {
+      border: 2px dashed #c0cde0;
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+      color: #999;
+      font-size: 13px;
+      cursor: pointer;
+      background: #fafbfd;
+    }
+    .photo-upload input { display: none; }
+    .photo-upload .icon { font-size: 32px; margin-bottom: 8px; }
+    .photo-upload p { margin-top: 4px; }
+
+    .experience-block {
+      border: 1px solid #e0e6f0;
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 12px;
+      background: #fafbfd;
+    }
+    .experience-block .exp-num {
+      font-size: 12px;
+      color: #1a5fa8;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .nihongo-table { width: 100%; border-collapse: collapse; }
+    .nihongo-table th, .nihongo-table td {
+      border: 1px solid #e0e6f0;
+      padding: 8px 10px;
+      font-size: 13px;
+      text-align: center;
+    }
+    .nihongo-table th { background: #f0f4fb; color: #1a5fa8; font-weight: bold; }
+    .nihongo-table td:first-child { text-align: left; }
+    .nihongo-table input[type="checkbox"] { accent-color: #1a5fa8; width: 18px; height: 18px; }
+
+    .level-select select { margin-top: 8px; }
+
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: #1a5fa8;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      margin-top: 8px;
+    }
+    .submit-btn:active { background: #154e8c; }
+
+    .note {
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Currículo / 履歴書</h1>
+  <p>田村工業株式会社 / Tamura Kogyo Co., Ltd.</p>
+</header>
+
+<div class="container">
+  <form action="#" method="post" enctype="multipart/form-data">
+
+    <!-- 写真 -->
+    <div class="section">
+      <div class="section-title">Foto / 写真</div>
+      <label class="photo-upload" for="photo">
+        <input type="file" id="photo" name="photo" accept="image/*">
+        <div class="icon">📷</div>
+        <strong>写真をアップロード</strong>
+        <p>Toque para adicionar sua foto<br>タップして写真を追加</p>
+      </label>
+    </div>
+
+    <!-- 基本情報 -->
+    <div class="section">
+      <div class="section-title">Informações Básicas / 基本情報</div>
+
+      <div class="field">
+        <label><span class="pt">DATA / 作成日</span></label>
+        <input type="date" name="data">
+      </div>
+
+      <div class="field">
+        <label><span class="pt">NOME / 氏名</span></label>
+        <input type="text" name="nome" placeholder="氏名をポルトガル語で記入">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label><span class="pt">NASCIMENTO / 生年月日</span></label>
+          <input type="date" name="nascimento">
+        </div>
+        <div class="field">
+          <label><span class="pt">IDADE / 年齢</span></label>
+          <input type="number" name="idade" placeholder="歳">
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span class="pt">SEXO / 性別</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="sexo" value="M"> Masculino / 男</label>
+          <label><input type="radio" name="sexo" value="F"> Feminino / 女</label>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label><span class="pt">TIPO SANGUINEO / 血液型</span></label>
+          <select name="tipo_sanguineo">
+            <option value="">選択</option>
+            <option>A</option><option>B</option><option>O</option><option>AB</option>
+          </select>
+        </div>
+        <div class="field">
+          <label><span class="pt">Pressão Arterial / 血圧</span></label>
+          <input type="text" name="pressao" placeholder="例: 120/80">
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span class="pt">DESCENDÊNCIA / 分類</span></label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="descendencia[]" value="issei"> ISSEI（一世）</label>
+          <label><input type="checkbox" name="descendencia[]" value="nisei"> NISEI（二世）</label>
+          <label><input type="checkbox" name="descendencia[]" value="sansei"> SANSEI（三世）</label>
+          <label><input type="checkbox" name="descendencia[]" value="mestico"> MESTIÇO（混血）</label>
+          <label><input type="checkbox" name="descendencia[]" value="brasileiro"> BRASILEIRO（日系外国人）</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 連絡先 -->
+    <div class="section">
+      <div class="section-title">Contato / 連絡先</div>
+
+      <div class="field">
+        <label><span class="pt">ENDEREÇO / 住所</span></label>
+        <input type="text" name="endereco" placeholder="住所">
+      </div>
+
+      <div class="field">
+        <label><span class="pt">Mudança de endereço / 住所変更</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="mudanca" value="sim"> (sim) はい</label>
+          <label><input type="radio" name="mudanca" value="nao"> (não) いいえ</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span class="pt">E-MAIL / メール</span></label>
+        <input type="email" name="email" placeholder="example@email.com">
+      </div>
+
+      <div class="field">
+        <label><span class="pt">CELULAR / 携帯番号</span></label>
+        <input type="tel" name="celular" placeholder="090-0000-0000">
+      </div>
+    </div>
+
+    <!-- 身体・資格 -->
+    <div class="section">
+      <div class="section-title">Informações Físicas / 身体・資格</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label><span class="pt">ALTURA / 身長</span></label>
+          <input type="number" name="altura" placeholder="cm">
+        </div>
+        <div class="field">
+          <label><span class="pt">PESO / 体重</span></label>
+          <input type="number" name="peso" placeholder="kg">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label><span class="pt">TAM. UNIFORME / 服のサイズ</span></label>
+          <select name="tam_uniforme">
+            <option value="">選択</option>
+            <option>XS</option><option>S</option><option>M</option>
+            <option>L</option><option>XL</option><option>XXL</option>
+          </select>
+        </div>
+        <div class="field">
+          <label><span class="pt">TAM. SAPATO / 靴のサイズ</span></label>
+          <input type="number" name="tam_sapato" placeholder="cm">
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span class="pt">VISÃO / 視力</span></label>
+        <input type="text" name="visao" placeholder="右 / 左">
+      </div>
+
+      <div class="field">
+        <label><span class="pt">ESTADO SAÚDE / 病歴・健康状態</span></label>
+        <textarea name="saude" rows="2" placeholder="特記事項があれば記入"></textarea>
+      </div>
+    </div>
+
+    <!-- ビザ・在留 -->
+    <div class="section">
+      <div class="section-title">Visto / 在留資格</div>
+
+      <div class="field">
+        <label><span class="pt">Valid. VISTO/REENTRY / ビザ・再入国有効期限</span></label>
+        <input type="date" name="visto">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label><span class="pt">PASSAPORTE Nr. / パスポート番号</span></label>
+          <input type="text" name="passaporte_nr">
+        </div>
+        <div class="field">
+          <label><span class="pt">有効期限</span></label>
+          <input type="date" name="passaporte_valid">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label><span class="pt">外国人登録番号</span></label>
+          <input type="text" name="gaikokujin_nr">
+        </div>
+        <div class="field">
+          <label><span class="pt">有効期限</span></label>
+          <input type="date" name="gaikokujin_valid">
+        </div>
+      </div>
+    </div>
+
+    <!-- 免許・その他 -->
+    <div class="section">
+      <div class="section-title">Habilitações / 免許・その他</div>
+
+      <div class="field">
+        <label><span class="pt">Lifto. Habilitacao / フォークリフト</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="lifto" value="sim"> sim / はい</label>
+          <label><input type="radio" name="lifto" value="nao"> não / いいえ</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span class="pt">CART. HABILITACAO / 運転免許</span></label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="cart[]" value="brasil"> Brasil / ブラジル</label>
+          <label><input type="checkbox" name="cart[]" value="japao"> Japão / 日本</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span class="pt">ANDA DE BICICLETA / 自転車に乗れますか</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="bicicleta" value="sim"> SIM / 乗れる</label>
+          <label><input type="radio" name="bicicleta" value="nao"> NÃO / 乗れない</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span class="pt">REF. A TATUAGEM / 刺青</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="tatuagem" value="sim"> Sim / 有り</label>
+          <label><input type="radio" name="tatuagem" value="nao"> Não / 無し</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 学歴・家族 -->
+    <div class="section">
+      <div class="section-title">Escolaridade / 学歴・家族</div>
+
+      <div class="field">
+        <label><span class="pt">ESCOLARID. / 最終学歴</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="escolaridade" value="1grau_c"> 1o Grau 中 / 卒業</label>
+          <label><input type="radio" name="escolaridade" value="1grau_i"> 1o Grau 中 / 中退</label>
+          <label><input type="radio" name="escolaridade" value="2grau_c"> 2o Grau 高 / 卒業</label>
+          <label><input type="radio" name="escolaridade" value="2grau_i"> 2o Grau 高 / 中退</label>
+          <label><input type="radio" name="escolaridade" value="sup_c"> Superior 大 / 卒業</label>
+          <label><input type="radio" name="escolaridade" value="sup_i"> Superior 大 / 中退</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span class="pt">Estado civil / 婚姻状況</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="civil" value="casado"> casado / 既婚</label>
+          <label><input type="radio" name="civil" value="solteiro"> solteiro / 未婚</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span class="pt">DIABETE / 糖尿病</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="diabete" value="sim"> Sim / 有り</label>
+          <label><input type="radio" name="diabete" value="nao"> Não / 無し</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span class="pt">ALERGIA / アレルギー</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="alergia" value="sim"> Sim / 有り</label>
+          <label><input type="radio" name="alergia" value="nao"> Não / 無し</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span class="pt">Filhos no Japão / 日本に子供</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="filhos" value="sim"> sim / はい</label>
+          <label><input type="radio" name="filhos" value="nao"> não / いいえ</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 勤務経験 -->
+    <div class="section">
+      <div class="section-title">Currículo Profissional Japão / 勤務経験</div>
+
+      <div class="experience-block">
+        <div class="exp-num">1</div>
+        <div class="field">
+          <label><span class="pt">NOME DA EMPRESA / 勤務先名称</span></label>
+          <input type="text" name="empresa_1">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label><span class="pt">PRODUTO FABRICADO / 製造品</span></label>
+            <input type="text" name="produto_1">
+          </div>
+          <div class="field">
+            <label><span class="pt">TIPO DE SERVIÇO / 職種</span></label>
+            <input type="text" name="servico_1">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label><span class="pt">Mês/Ano / 期間（開始）</span></label>
+            <input type="month" name="periodo_inicio_1">
+          </div>
+          <div class="field">
+            <label><span class="pt">Mês/Ano / 期間（終了）</span></label>
+            <input type="month" name="periodo_fim_1">
+          </div>
+        </div>
+        <div class="field">
+          <label><span class="pt">MOTIVO DE DEMISSÃO / 退職理由</span></label>
+          <input type="text" name="demissao_1">
+        </div>
+      </div>
+
+      <div class="experience-block">
+        <div class="exp-num">2</div>
+        <div class="field">
+          <label><span class="pt">NOME DA EMPRESA / 勤務先名称</span></label>
+          <input type="text" name="empresa_2">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label><span class="pt">PRODUTO FABRICADO / 製造品</span></label>
+            <input type="text" name="produto_2">
+          </div>
+          <div class="field">
+            <label><span class="pt">TIPO DE SERVIÇO / 職種</span></label>
+            <input type="text" name="servico_2">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label><span class="pt">Mês/Ano / 期間（開始）</span></label>
+            <input type="month" name="periodo_inicio_2">
+          </div>
+          <div class="field">
+            <label><span class="pt">Mês/Ano / 期間（終了）</span></label>
+            <input type="month" name="periodo_fim_2">
+          </div>
+        </div>
+        <div class="field">
+          <label><span class="pt">MOTIVO DE DEMISSÃO / 退職理由</span></label>
+          <input type="text" name="demissao_2">
+        </div>
+      </div>
+
+      <div class="experience-block">
+        <div class="exp-num">3</div>
+        <div class="field">
+          <label><span class="pt">NOME DA EMPRESA / 勤務先名称</span></label>
+          <input type="text" name="empresa_3">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label><span class="pt">PRODUTO FABRICADO / 製造品</span></label>
+            <input type="text" name="produto_3">
+          </div>
+          <div class="field">
+            <label><span class="pt">TIPO DE SERVIÇO / 職種</span></label>
+            <input type="text" name="servico_3">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label><span class="pt">Mês/Ano / 期間（開始）</span></label>
+            <input type="month" name="periodo_inicio_3">
+          </div>
+          <div class="field">
+            <label><span class="pt">Mês/Ano / 期間（終了）</span></label>
+            <input type="month" name="periodo_fim_3">
+          </div>
+        </div>
+        <div class="field">
+          <label><span class="pt">MOTIVO DE DEMISSÃO / 退職理由</span></label>
+          <input type="text" name="demissao_3">
+        </div>
+      </div>
+
+      <div class="experience-block">
+        <div class="exp-num">4</div>
+        <div class="field">
+          <label><span class="pt">NOME DA EMPRESA / 勤務先名称</span></label>
+          <input type="text" name="empresa_4">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label><span class="pt">PRODUTO FABRICADO / 製造品</span></label>
+            <input type="text" name="produto_4">
+          </div>
+          <div class="field">
+            <label><span class="pt">TIPO DE SERVIÇO / 職種</span></label>
+            <input type="text" name="servico_4">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label><span class="pt">Mês/Ano / 期間（開始）</span></label>
+            <input type="month" name="periodo_inicio_4">
+          </div>
+          <div class="field">
+            <label><span class="pt">Mês/Ano / 期間（終了）</span></label>
+            <input type="month" name="periodo_fim_4">
+          </div>
+        </div>
+        <div class="field">
+          <label><span class="pt">MOTIVO DE DEMISSÃO / 退職理由</span></label>
+          <input type="text" name="demissao_4">
+        </div>
+      </div>
+    </div>
+
+    <!-- 日本語能力 -->
+    <div class="section">
+      <div class="section-title">Idioma Japonês / 日本語能力</div>
+
+      <div class="field">
+        <label><span class="pt">レベル / Nível</span></label>
+        <select name="nivel_japones">
+          <option value="">選択してください</option>
+          <option value="0-20">0%〜20% Um Pouco / 少し出来る</option>
+          <option value="21-40">21%〜40% Básico / 中級</option>
+          <option value="41-60">41%〜60% Avançado / 大体出来る</option>
+          <option value="61+">61%〜 Fluente / 結構出来る</option>
+        </select>
+      </div>
+
+      <table class="nihongo-table">
+        <thead>
+          <tr>
+            <th>能力</th>
+            <th>Hiragana<br>ひらがな</th>
+            <th>Katakana<br>カタカナ</th>
+            <th>Kanji Básico<br>漢字小学校</th>
+            <th>Kanji Médio<br>漢字中学校</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ENTENDE / 分かる</td>
+            <td><input type="checkbox" name="entende_hira"></td>
+            <td><input type="checkbox" name="entende_kata"></td>
+            <td><input type="checkbox" name="entende_kanji_b"></td>
+            <td><input type="checkbox" name="entende_kanji_m"></td>
+          </tr>
+          <tr>
+            <td>CONVERSA / 話す</td>
+            <td><input type="checkbox" name="conversa_hira"></td>
+            <td><input type="checkbox" name="conversa_kata"></td>
+            <td><input type="checkbox" name="conversa_kanji_b"></td>
+            <td><input type="checkbox" name="conversa_kanji_m"></td>
+          </tr>
+          <tr>
+            <td>LÊ / 読む</td>
+            <td><input type="checkbox" name="le_hira"></td>
+            <td><input type="checkbox" name="le_kata"></td>
+            <td><input type="checkbox" name="le_kanji_b"></td>
+            <td><input type="checkbox" name="le_kanji_m"></td>
+          </tr>
+          <tr>
+            <td>ESCREVE / 書く</td>
+            <td><input type="checkbox" name="escreve_hira"></td>
+            <td><input type="checkbox" name="escreve_kata"></td>
+            <td><input type="checkbox" name="escreve_kanji_b"></td>
+            <td><input type="checkbox" name="escreve_kanji_m"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 送信 -->
+    <button type="submit" class="submit-btn">
+      Enviar / 送信する
+    </button>
+
+    <p class="note">
+      入力内容は担当者に送信されます。<br>
+      As informações serão enviadas ao responsável.
+    </p>
+
+  </form>
+</div>
+
+</body>
+</html>
