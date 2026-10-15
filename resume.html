@@ -287,7 +287,7 @@
 
       <div class="field">
         <label class="field-label" data-t="f_date">作成日</label>
-        <input type="date" name="data">
+        <input type="text" name="data" data-t-ph="ph_date" placeholder="YYYY/MM/DD">
       </div>
       <div class="field">
         <label class="field-label" data-t="f_name">氏名</label>
@@ -296,7 +296,7 @@
       <div class="field-row">
         <div class="field">
           <label class="field-label" data-t="f_birth">生年月日</label>
-          <input type="date" name="nascimento">
+          <input type="text" name="nascimento" data-t-ph="ph_date" placeholder="YYYY/MM/DD">
         </div>
         <div class="field">
           <label class="field-label" data-t="f_age">年齢</label>
@@ -404,7 +404,7 @@
 
       <div class="field">
         <label class="field-label" data-t="f_visto">ビザ・再入国有効期限</label>
-        <input type="date" name="visto">
+        <input type="text" name="visto" data-t-ph="ph_date" placeholder="YYYY/MM/DD">
       </div>
       <div class="field-row">
         <div class="field">
@@ -413,7 +413,7 @@
         </div>
         <div class="field">
           <label class="field-label" data-t="f_valid">有効期限</label>
-          <input type="date" name="passaporte_valid">
+          <input type="text" name="passaporte_valid" data-t-ph="ph_date" placeholder="YYYY/MM/DD">
         </div>
       </div>
       <div class="field-row">
@@ -423,7 +423,7 @@
         </div>
         <div class="field">
           <label class="field-label" data-t="f_valid">有効期限</label>
-          <input type="date" name="gaikokujin_valid">
+          <input type="text" name="gaikokujin_valid" data-t-ph="ph_date" placeholder="YYYY/MM/DD">
         </div>
       </div>
     </div>
@@ -519,8 +519,8 @@
           <div class="field"><label class="field-label" data-t="f_servico">職種</label><input type="text" name="servico_1"></div>
         </div>
         <div class="field-row">
-          <div class="field"><label class="field-label" data-t="f_periodo_start">期間（開始）</label><input type="month" name="periodo_inicio_1"></div>
-          <div class="field"><label class="field-label" data-t="f_periodo_end">期間（終了）</label><input type="month" name="periodo_fim_1"></div>
+          <div class="field"><label class="field-label" data-t="f_periodo_start">期間（開始）</label><input type="text" name="periodo_inicio_1" data-t-ph="ph_month" placeholder="YYYY/MM"></div>
+          <div class="field"><label class="field-label" data-t="f_periodo_end">期間（終了）</label><input type="text" name="periodo_fim_1" data-t-ph="ph_month" placeholder="YYYY/MM"></div>
         </div>
         <div class="field"><label class="field-label" data-t="f_demissao">退職理由</label><input type="text" name="demissao_1"></div>
       </div>
@@ -533,8 +533,8 @@
           <div class="field"><label class="field-label" data-t="f_servico">職種</label><input type="text" name="servico_2"></div>
         </div>
         <div class="field-row">
-          <div class="field"><label class="field-label" data-t="f_periodo_start">期間（開始）</label><input type="month" name="periodo_inicio_2"></div>
-          <div class="field"><label class="field-label" data-t="f_periodo_end">期間（終了）</label><input type="month" name="periodo_fim_2"></div>
+          <div class="field"><label class="field-label" data-t="f_periodo_start">期間（開始）</label><input type="text" name="periodo_inicio_2" data-t-ph="ph_month" placeholder="YYYY/MM"></div>
+          <div class="field"><label class="field-label" data-t="f_periodo_end">期間（終了）</label><input type="text" name="periodo_fim_2" data-t-ph="ph_month" placeholder="YYYY/MM"></div>
         </div>
         <div class="field"><label class="field-label" data-t="f_demissao">退職理由</label><input type="text" name="demissao_2"></div>
       </div>
@@ -547,8 +547,8 @@
           <div class="field"><label class="field-label" data-t="f_servico">職種</label><input type="text" name="servico_3"></div>
         </div>
         <div class="field-row">
-          <div class="field"><label class="field-label" data-t="f_periodo_start">期間（開始）</label><input type="month" name="periodo_inicio_3"></div>
-          <div class="field"><label class="field-label" data-t="f_periodo_end">期間（終了）</label><input type="month" name="periodo_fim_3"></div>
+          <div class="field"><label class="field-label" data-t="f_periodo_start">期間（開始）</label><input type="text" name="periodo_inicio_3" data-t-ph="ph_month" placeholder="YYYY/MM"></div>
+          <div class="field"><label class="field-label" data-t="f_periodo_end">期間（終了）</label><input type="text" name="periodo_fim_3" data-t-ph="ph_month" placeholder="YYYY/MM"></div>
         </div>
         <div class="field"><label class="field-label" data-t="f_demissao">退職理由</label><input type="text" name="demissao_3"></div>
       </div>
@@ -561,8 +561,8 @@
           <div class="field"><label class="field-label" data-t="f_servico">職種</label><input type="text" name="servico_4"></div>
         </div>
         <div class="field-row">
-          <div class="field"><label class="field-label" data-t="f_periodo_start">期間（開始）</label><input type="month" name="periodo_inicio_4"></div>
-          <div class="field"><label class="field-label" data-t="f_periodo_end">期間（終了）</label><input type="month" name="periodo_fim_4"></div>
+          <div class="field"><label class="field-label" data-t="f_periodo_start">期間（開始）</label><input type="text" name="periodo_inicio_4" data-t-ph="ph_month" placeholder="YYYY/MM"></div>
+          <div class="field"><label class="field-label" data-t="f_periodo_end">期間（終了）</label><input type="text" name="periodo_fim_4" data-t-ph="ph_month" placeholder="YYYY/MM"></div>
         </div>
         <div class="field"><label class="field-label" data-t="f_demissao">退職理由</label><input type="text" name="demissao_4"></div>
       </div>
@@ -734,7 +734,9 @@ const T = {
     ph_pressure: '例: 120/80',
     ph_address: '住所',
     ph_health: '特記事項があれば記入',
-    lang_other: 'その他の言語（Google翻訳）',
+    ph_date: 'YYYY/MM/DD',
+    ph_month: 'YYYY/MM',
+    lang_other: '',
   },
   pt: {
     title: 'Currículo',
@@ -836,6 +838,8 @@ const T = {
     ph_pressure: 'Ex: 120/80',
     ph_address: 'Endereço',
     ph_health: 'Preencha se houver observações',
+    ph_date: 'DD/MM/AAAA',
+    ph_month: 'MM/AAAA',
     lang_other: '',
   },
   ko: {
@@ -938,6 +942,8 @@ const T = {
     ph_pressure: '예: 120/80',
     ph_address: '주소',
     ph_health: '특기 사항이 있으면 기재',
+    ph_date: 'YYYY/MM/DD',
+    ph_month: 'YYYY/MM',
     lang_other: '',
   },
   fil: {
@@ -1040,6 +1046,8 @@ const T = {
     ph_pressure: 'Hal: 120/80',
     ph_address: 'Tirahan',
     ph_health: 'Punan kung mayroon kang puna',
+    ph_date: 'MM/DD/YYYY',
+    ph_month: 'MM/YYYY',
     lang_other: '',
   },
   en: {
@@ -1142,6 +1150,8 @@ const T = {
     ph_pressure: 'e.g. 120/80',
     ph_address: 'Address',
     ph_health: 'Enter any notes if applicable',
+    ph_date: 'MM/DD/YYYY',
+    ph_month: 'MM/YYYY',
     lang_other: '',
   }
 };
@@ -1165,9 +1175,6 @@ function applyLang(lang) {
   updateLangButtons(lang);
   const langCode = LANG_CODE[lang] || lang;
   document.documentElement.lang = langCode;
-  document.querySelectorAll('input[type="date"], input[type="month"]').forEach(el => {
-    el.setAttribute('lang', langCode);
-  });
   currentLang = lang;
   localStorage.setItem('lang', lang);
   closeDropdown();
