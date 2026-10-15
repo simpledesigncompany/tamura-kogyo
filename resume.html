@@ -64,9 +64,26 @@
       color: #333;
       cursor: pointer;
     }
+    .lang-dropdown .dropdown-title {
+      display: block;
+      padding: 10px 20px 6px;
+      font-size: 11px;
+      font-weight: bold;
+      color: #999;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .lang-dropdown button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .lang-dropdown button .check { color: #1a5fa8; font-size: 13px; width: 14px; }
     .lang-dropdown button:hover { background: #f0f4fb; color: #1a5fa8; }
     .lang-dropdown button:not(:last-child) { border-bottom: 1px solid #f0f0f0; }
-    .lang-dropdown button.active { color: #1a5fa8; font-weight: bold; }
+    .lang-dropdown button.current { color: #aaa; cursor: default; pointer-events: none; }
+    .lang-dropdown button.current:hover { background: none; }
 
     /* ── ヘッダー ── */
     header {
@@ -240,9 +257,12 @@
       Language <span class="divider">|</span> <span id="current-lang">日本語</span>
     </button>
     <div class="lang-dropdown" id="lang-dropdown">
-      <button onclick="setLang('ja')" id="btn-ja" class="active">日本語</button>
-      <button onclick="setLang('pt')" id="btn-pt">Português</button>
-      <button onclick="openGoogleTranslate()" id="btn-other">その他の言語（Google翻訳）</button>
+      <span class="dropdown-title">Language</span>
+      <button id="btn-ja" onclick="setLang('ja')"><span class="check" id="check-ja">✓</span>日本語</button>
+      <button id="btn-pt" onclick="setLang('pt')"><span class="check" id="check-pt"></span>Português</button>
+      <button onclick="openGoogleTranslateLang('ko')"><span class="check"></span>한국어</button>
+      <button onclick="openGoogleTranslateLang('fil')"><span class="check"></span>Filipino</button>
+      <button onclick="openGoogleTranslateLang('en')"><span class="check"></span>English</button>
     </div>
   </div>
 </header>
@@ -836,10 +856,8 @@ function applyLang(lang) {
   });
   // ボタン表示
   document.getElementById('current-lang').textContent = d.lang_label;
-  document.getElementById('btn-other').textContent = d.lang_other;
-  // activeクラス
-  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
-  document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+  // 現在地表示更新
+  updateLangButtons(lang);
   // html lang属性
   document.documentElement.lang = lang === 'ja' ? 'ja' : 'pt';
   currentLang = lang;
@@ -854,10 +872,24 @@ function closeDropdown() {
   document.getElementById('lang-dropdown').classList.remove('open');
 }
 function setLang(lang) { applyLang(lang); }
-function openGoogleTranslate() {
-  const url = encodeURIComponent(window.location.href);
-  window.open('https://translate.google.com/translate?sl=ja&u=' + url, '_blank');
+function openGoogleTranslateLang(tl) {
+  const base = window.location.href.split('?')[0];
+  const url = encodeURIComponent(base);
+  window.open('https://translate.google.com/translate?sl=ja&tl=' + tl + '&u=' + url, '_blank');
   closeDropdown();
+}
+function updateLangButtons(lang) {
+  ['ja', 'pt'].forEach(l => {
+    const btn = document.getElementById('btn-' + l);
+    const check = document.getElementById('check-' + l);
+    if (l === lang) {
+      btn.classList.add('current');
+      check.textContent = '✓';
+    } else {
+      btn.classList.remove('current');
+      check.textContent = '';
+    }
+  });
 }
 
 // 外側クリックで閉じる
