@@ -1163,7 +1163,11 @@ function applyLang(lang) {
   });
   document.getElementById('current-lang').textContent = d.lang_label;
   updateLangButtons(lang);
-  document.documentElement.lang = LANG_CODE[lang] || lang;
+  const langCode = LANG_CODE[lang] || lang;
+  document.documentElement.lang = langCode;
+  document.querySelectorAll('input[type="date"], input[type="month"]').forEach(el => {
+    el.setAttribute('lang', langCode);
+  });
   currentLang = lang;
   localStorage.setItem('lang', lang);
   closeDropdown();
