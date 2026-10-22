@@ -249,7 +249,6 @@
 
     /* ── Footer ── */
     .site-footer {
-      background: linear-gradient(160deg, #e8f2fc 0%, #ddeaf8 50%, #e4eefc 100%);
       padding: 70px 0 0;
       position: relative;
       overflow: hidden;
@@ -261,14 +260,16 @@
       width: 100%;
       height: auto;
       pointer-events: none;
+      z-index: 0;
     }
-
     .footer-inner {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 40px;
       display: flex;
       flex-direction: column;
+      position: relative;
+      z-index: 1;
       gap: 28px;
     }
 
