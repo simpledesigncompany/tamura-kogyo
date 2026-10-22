@@ -26,6 +26,44 @@
     }
     .preview-bar .info { color: #ccc; }
     .preview-bar .hint { color: #555; }
+    .view-toggle {
+      display: flex;
+      gap: 4px;
+    }
+    .view-toggle button {
+      background: #333;
+      color: #888;
+      border: none;
+      padding: 3px 10px;
+      border-radius: 3px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .view-toggle button.active {
+      background: #555;
+      color: #fff;
+    }
+
+    /* ── SP mode ── */
+    .sp-view { display: none; }
+    .pc-view { display: block; }
+
+    body.sp-mode .sp-view { display: block; }
+    body.sp-mode .pc-view { display: none; }
+
+    .sp-frame {
+      display: flex;
+      justify-content: center;
+      background: #e0e0e0;
+      padding: 24px 0;
+    }
+    .sp-frame img {
+      width: 390px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    }
 
     /* ── Global Nav ── */
     .site-nav {
@@ -457,7 +495,10 @@
   <!-- Preview Bar -->
   <div class="preview-bar">
     <span class="info">田村工業様 — デザイン確認 / 2026.10.18</span>
-    <span class="hint">↑ ナビゲーションをクリックしてページを切り替えられます</span>
+    <div class="view-toggle">
+      <button id="btn-pc" class="active" onclick="setView('pc')">PC</button>
+      <button id="btn-sp" onclick="setView('sp')">SP</button>
+    </div>
     <span>SIMPLE DESIGN株式会社</span>
   </div>
 
@@ -514,10 +555,15 @@
 
   <!-- トップページ -->
   <div class="page active" id="page-top">
-    <img src="images/toppage-pc.jpg" alt="トップページ">
-    <div class="works-detail-hint">
-      事業内容ページのデザインも確認できます
-      <button onclick="showPage('business')">事業内容ページを見る →</button>
+    <div class="pc-view">
+      <img src="images/toppage-pc.jpg" alt="トップページ PC">
+      <div class="works-detail-hint">
+        事業内容ページのデザインも確認できます
+        <button onclick="showPage('business')">事業内容ページを見る →</button>
+      </div>
+    </div>
+    <div class="sp-view sp-frame">
+      <img src="images/toppage-mobile.jpg" alt="トップページ SP">
     </div>
   </div>
 
@@ -642,6 +688,12 @@
       'about': 'nav-about',
       'contact': 'nav-contact',
     };
+
+    function setView(mode) {
+      document.body.classList.toggle('sp-mode', mode === 'sp');
+      document.getElementById('btn-pc').classList.toggle('active', mode === 'pc');
+      document.getElementById('btn-sp').classList.toggle('active', mode === 'sp');
+    }
 
     function showPage(name) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
