@@ -6,98 +6,545 @@
   <title>デザイン確認 | 田村工業</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      background: #1a1a1a;
-      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
-      color: #fff;
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      background: #f0f4f8;
     }
-    header {
-      background: #1a5fa8;
-      padding: 16px 24px;
-      text-align: center;
-    }
-    header h1 { font-size: 18px; font-weight: bold; }
-    header p { font-size: 13px; opacity: 0.8; margin-top: 4px; }
-    .group-label {
-      font-size: 16px;
-      font-weight: bold;
-      color: #fff;
-      padding: 40px 24px 0;
-      border-top: 1px solid #333;
-      margin-top: 40px;
-    }
-    .group-label:first-of-type { border-top: none; margin-top: 0; }
-    .section {
-      padding: 24px 0 0;
-    }
-    .section-label {
-      font-size: 12px;
-      color: #aaa;
-      padding: 0 24px 10px;
-      letter-spacing: 0.05em;
-    }
-    .section img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-    .section.mobile {
+
+    /* ── Preview Bar ── */
+    .preview-bar {
+      background: #111;
+      color: #888;
+      font-size: 11px;
+      padding: 7px 20px;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: 0.04em;
+    }
+    .preview-bar .info { color: #ccc; }
+    .preview-bar .hint { color: #555; }
+
+    /* ── Global Nav ── */
+    .site-nav {
+      background: #fff;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      height: 88px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+    .logo-diamond {
+      width: 50px;
+      height: 50px;
+      border: 2px solid #24619e;
+      transform: rotate(45deg);
+      display: flex;
+      align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
-    .section.mobile img {
-      width: 390px;
-      max-width: 100%;
+    .logo-diamond span {
+      transform: rotate(-45deg);
+      font-size: 19px;
+      font-weight: bold;
+      color: #24619e;
     }
-    footer {
-      padding: 32px;
-      text-align: center;
-      font-size: 12px;
-      color: #666;
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
     }
+    .logo-sub {
+      font-size: 10px;
+      color: #24619e;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+    .logo-main {
+      font-size: 21px;
+      font-weight: bold;
+      color: #24619e;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 46px;
+      padding-top: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 31px;
+      list-style: none;
+    }
+    .nav-link {
+      font-size: 15px;
+      font-weight: 500;
+      color: #24619e;
+      cursor: pointer;
+      white-space: nowrap;
+      background: none;
+      border: none;
+      padding: 0;
+      letter-spacing: 0.04em;
+    }
+    .nav-link:hover { opacity: 0.6; }
+
+    .btn-group {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .btn-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      padding-top: 20px;
+    }
+    .btn-note {
+      font-size: 11px;
+      font-weight: 500;
+      color: #24619e;
+      white-space: nowrap;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      letter-spacing: 0.04em;
+    }
+    .btn-primary {
+      background: linear-gradient(193deg, #ffaa00 31%, #ff6868 88%);
+      color: #fff;
+      border: none;
+      padding: 8px 22px;
+      border-radius: 20px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-secondary-wrap {
+      background: #fff;
+      border: 2px solid #ffaa00;
+      border-radius: 20px;
+      cursor: pointer;
+      padding: 0;
+    }
+    .btn-secondary-wrap:hover { background: #fff9f0; }
+    .btn-secondary-inner {
+      display: block;
+      padding: 6px 20px;
+      font-size: 15px;
+      font-weight: bold;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      background: linear-gradient(187deg, #ffaa00 31%, #ff6868 88%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn-lang {
+      background: #fff;
+      color: #24619e;
+      border: 1px solid rgba(0, 74, 109, 0.15);
+      padding: 9px 16px;
+      border-radius: 26px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 0 3px rgba(53, 107, 199, 0.1);
+    }
+    .btn-lang:hover { background: #f5f8ff; }
+
+    /* ── Pages ── */
+    .page { display: none; }
+    .page.active { display: block; }
+    .page img { display: block; width: 100%; height: auto; }
+
+    .works-detail-hint {
+      background: #fff;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #eee;
+    }
+    .works-detail-hint button {
+      background: #24619e;
+      color: #fff;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .works-detail-hint button:hover { background: #1a4e88; }
+
+    .placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      gap: 12px;
+      color: #aaa;
+      background: #f9f9f9;
+    }
+    .placeholder .ph-title { font-size: 15px; color: #666; }
+    .placeholder .ph-note { font-size: 12px; }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: linear-gradient(160deg, #e8f2fc 0%, #ddeaf8 50%, #e4eefc 100%);
+      padding: 70px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .footer-company {
+      display: flex;
+      flex-direction: column;
+      gap: 19px;
+    }
+    .footer-tagline {
+      font-size: 16px;
+      color: #24619e;
+      line-height: 1.6;
+      letter-spacing: 0.04em;
+    }
+    .footer-company-name {
+      font-size: 42px;
+      font-weight: bold;
+      color: #24619e;
+      letter-spacing: 0.03em;
+    }
+    .footer-address {
+      font-size: 16px;
+      color: #24619e;
+    }
+
+    .footer-news {
+      border-left: 1px solid rgba(36, 97, 158, 0.6);
+      padding-left: 30px;
+      width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-news h3 {
+      font-size: 25px;
+      font-weight: bold;
+      color: #24619e;
+      padding-bottom: 11px;
+    }
+    .footer-news ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-news li { font-size: 18px; color: #24619e; }
+
+    .footer-contact-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px 50px;
+      display: flex;
+      gap: 63px;
+      align-items: flex-start;
+    }
+
+    .footer-web-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 380px;
+    }
+    .footer-tel-contact {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .contact-heading {
+      font-size: 22px;
+      font-weight: bold;
+      color: #24619e;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .contact-heading::before {
+      content: '';
+      display: inline-block;
+      width: 7px;
+      height: 12px;
+      background: linear-gradient(180deg, #ffac1c, #f78c00);
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+      flex-shrink: 0;
+    }
+
+    .btn-contact-form {
+      background: linear-gradient(180deg, #ffac1c 0%, #f78c00 100%);
+      color: #fff;
+      border: none;
+      border-radius: 60px;
+      padding: 15px 30px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      white-space: nowrap;
+    }
+    .btn-contact-form:hover { opacity: 0.88; }
+
+    .tel-number {
+      font-size: 38px;
+      font-weight: bold;
+      color: #24619e;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 11px 0;
+    }
+
+    .tel-hours {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-self: flex-end;
+    }
+    .tel-hours > div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      color: #24619e;
+    }
+    .hours-badge {
+      background: rgba(36, 97, 158, 0.22);
+      color: #24619e;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 0 10px;
+      line-height: 29px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      font-size: 14px;
+      color: #24619e;
+      padding-bottom: 24px;
+    }
+    .footer-bottom a {
+      color: #24619e;
+      text-decoration: none;
+    }
+    .footer-bottom a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>田村工業様 — デザイン確認</h1>
-  <p>2026.10.18</p>
-</header>
-
-<p class="group-label">PC</p>
-
-<div class="section">
-  <p class="section-label">トップページ</p>
-  <img src="images/toppage-pc.jpg" alt="トップページ PC">
-</div>
-
-<div class="section">
-  <p class="section-label">求人情報一覧ページ</p>
-  <img src="images/works-list-pc.jpg" alt="求人情報一覧 PC">
-</div>
-
-<div class="section">
-  <p class="section-label">求人情報詳細ページ</p>
-  <img src="images/works-detail.jpg" alt="施工実績 詳細">
-</div>
-
-<p class="group-label">モバイル</p>
-
-<div class="section mobile">
-  <div>
-    <p class="section-label">トップページ</p>
-    <img src="images/toppage-mobile.jpg" alt="トップページ モバイル">
+  <!-- Preview Bar -->
+  <div class="preview-bar">
+    <span class="info">田村工業様 — デザイン確認 / 2026.10.18</span>
+    <span class="hint">↑ ナビゲーションをクリックしてページを切り替えられます</span>
+    <span>SIMPLE DESIGN株式会社</span>
   </div>
-</div>
 
-<div class="section mobile">
-  <div>
-    <p class="section-label">求人情報一覧ページ</p>
-    <img src="images/works-list-mobile.jpg" alt="求人情報一覧 モバイル">
+  <!-- Global Nav -->
+  <nav class="site-nav">
+    <a class="nav-logo" onclick="showPage('top')">
+      <div class="logo-diamond"><span>K</span></div>
+      <div class="logo-text">
+        <span class="logo-sub">人材派遣 / アウトソーシング</span>
+        <span class="logo-main">株式会社 田村工業</span>
+      </div>
+    </a>
+
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><button class="nav-link" id="nav-seekers" onclick="showPage('seekers')">お仕事をお探しの方へ</button></li>
+        <li><button class="nav-link" id="nav-companies" onclick="showPage('companies')">企業様へ</button></li>
+        <li><button class="nav-link" id="nav-about" onclick="showPage('about')">会社案内</button></li>
+      </ul>
+      <div class="btn-group">
+        <div class="btn-wrap">
+          <span class="btn-note">\ 日本人の方もどうぞ /</span>
+          <button class="btn-primary" id="nav-works" onclick="showPage('works')">お仕事を探す</button>
+        </div>
+        <button class="btn-secondary-wrap" id="nav-contact" onclick="showPage('contact')">
+          <span class="btn-secondary-inner">お仕事の相談・登録</span>
+        </button>
+        <button class="btn-lang">⚙ Language</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- トップページ -->
+  <div class="page active" id="page-top">
+    <img src="images/toppage-pc.jpg" alt="トップページ">
   </div>
-</div>
 
-<footer>SIMPLE DESIGN株式会社</footer>
+  <!-- 求人情報一覧 -->
+  <div class="page" id="page-works">
+    <img src="images/works-list-pc.jpg" alt="求人情報一覧">
+    <div class="works-detail-hint">
+      求人詳細ページのデザインも確認できます
+      <button onclick="showPage('works-detail')">求人詳細ページを見る →</button>
+    </div>
+  </div>
+
+  <!-- 求人詳細 -->
+  <div class="page" id="page-works-detail">
+    <img src="images/works-detail.jpg" alt="求人詳細">
+  </div>
+
+  <!-- お仕事をお探しの方へ（準備中） -->
+  <div class="page" id="page-seekers">
+    <div class="placeholder">
+      <div class="ph-title">お仕事をお探しの方へ</div>
+      <div class="ph-note">このページのデザインは現在準備中です</div>
+    </div>
+  </div>
+
+  <!-- 企業様へ（準備中） -->
+  <div class="page" id="page-companies">
+    <div class="placeholder">
+      <div class="ph-title">企業様へ</div>
+      <div class="ph-note">このページのデザインは現在準備中です</div>
+    </div>
+  </div>
+
+  <!-- 会社案内（準備中） -->
+  <div class="page" id="page-about">
+    <div class="placeholder">
+      <div class="ph-title">会社案内</div>
+      <div class="ph-note">このページのデザインは現在準備中です</div>
+    </div>
+  </div>
+
+  <!-- お仕事の相談・登録（準備中） -->
+  <div class="page" id="page-contact">
+    <div class="placeholder">
+      <div class="ph-title">お仕事の相談・登録</div>
+      <div class="ph-note">このページのデザインは現在準備中です</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-company">
+          <div class="footer-tagline">
+            日本、関西で働けるお仕事を紹介します。<br>
+            関西の人材派遣アウトソーシングなら株式会社田村工業へ。
+          </div>
+          <div class="footer-company-name">株式会社 田村工業</div>
+          <div class="footer-address">〒665-0056 兵庫県宝塚市中野町6番6号 三幸建設ビル202号</div>
+        </div>
+        <div class="footer-news">
+          <h3>お知らせ</h3>
+          <ul>
+            <li>2026.12.15　年末年始休業のお知らせ</li>
+            <li>2026.12.01　ホームページをリニューアルしました</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-contact-card">
+        <div class="footer-web-contact">
+          <div class="contact-heading">Webサイトからのお問い合わせ</div>
+          <button class="btn-contact-form">お問い合わせフォームはこちら</button>
+        </div>
+        <div class="footer-tel-contact">
+          <div class="contact-heading">お電話からのお問い合わせ</div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <div class="tel-number">📞 0797-72-2900</div>
+            <div class="tel-hours">
+              <div><span class="hours-badge">平日</span>8：00〜18：00</div>
+              <div><span class="hours-badge">土曜</span>8：00〜12：00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">サイトマップ</a>
+        <span>© 2026 株式会社田村工業 All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const pageNavMap = {
+      'top': null,
+      'works': 'nav-works',
+      'works-detail': 'nav-works',
+      'seekers': 'nav-seekers',
+      'companies': 'nav-companies',
+      'about': 'nav-about',
+      'contact': 'nav-contact',
+    };
+
+    function showPage(name) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const target = document.getElementById('page-' + name);
+      if (target) target.classList.add('active');
+      window.scrollTo({ top: 0 });
+    }
+  </script>
 
 </body>
 </html>
