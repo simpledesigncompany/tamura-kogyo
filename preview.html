@@ -157,6 +157,9 @@
       -webkit-text-fill-color: transparent;
     }
 
+    .lang-wrap {
+      position: relative;
+    }
     .btn-lang {
       background: #fff;
       color: #24619e;
@@ -173,6 +176,35 @@
       box-shadow: 0 0 3px rgba(53, 107, 199, 0.1);
     }
     .btn-lang:hover { background: #f5f8ff; }
+    .lang-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: #fff;
+      border: 1px solid rgba(0, 74, 109, 0.15);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      overflow: hidden;
+      min-width: 140px;
+      z-index: 200;
+    }
+    .lang-dropdown.open { display: block; }
+    .lang-option {
+      display: block;
+      width: 100%;
+      padding: 11px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #24619e;
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+    }
+    .lang-option:hover { background: #f0f6ff; }
+    .lang-option + .lang-option { border-top: 1px solid rgba(0,74,109,0.08); }
 
     /* ── Pages ── */
     .page { display: none; }
@@ -413,7 +445,21 @@
         <button class="btn-secondary-wrap" id="nav-contact" onclick="showPage('contact')">
           <span class="btn-secondary-inner">お仕事の相談・登録</span>
         </button>
-        <button class="btn-lang">⚙ Language</button>
+        <div class="lang-wrap">
+          <button class="btn-lang" onclick="toggleLang(event)">
+            <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.30762 0C7.57442 0.000174325 7.80407 0.188559 7.85645 0.450195L8.1748 2.04688C8.65176 2.23976 9.09297 2.50265 9.48438 2.82422L11.0518 2.29492C11.3046 2.20943 11.5833 2.31471 11.7168 2.5459L12.6582 4.17578C12.7914 4.40692 12.7424 4.69981 12.542 4.87598L11.2734 5.99023C11.3081 6.22896 11.3271 6.47334 11.3271 6.72168C11.3271 6.96949 11.308 7.21293 11.2734 7.45117L12.542 8.56641C12.7423 8.74252 12.7913 9.03549 12.6582 9.2666L11.7168 10.8975C11.5833 11.1285 11.3045 11.2329 11.0518 11.1475L9.48438 10.6172C9.09294 10.9389 8.65183 11.2016 8.1748 11.3945L7.85645 12.9922C7.80411 13.2539 7.57445 13.4422 7.30762 13.4424H5.4248C5.15798 13.4422 4.92832 13.2539 4.87598 12.9922L4.56934 11.4619C4.04543 11.2721 3.56239 10.9974 3.13574 10.6553L1.68066 11.1475C1.42777 11.233 1.14913 11.1277 1.01562 10.8965L0.0751953 9.2666C-0.0582702 9.03539 -0.0101087 8.74265 0.19043 8.56641L1.31836 7.57324C1.27122 7.29636 1.24514 7.01199 1.24512 6.72168C1.24512 6.43085 1.27107 6.14552 1.31836 5.86816L0.19043 4.87598C-0.0101121 4.69973 -0.0582788 4.407 0.0751953 4.17578L1.01562 2.5459C1.14913 2.31471 1.42777 2.20937 1.68066 2.29492L3.13574 2.78613C3.56235 2.44414 4.04552 2.16921 4.56934 1.97949L4.87598 0.450195C4.92835 0.188561 5.15801 0.000180209 5.4248 0H7.30762ZM6.37402 4.48047C5.13667 4.48047 4.13379 5.48433 4.13379 6.72168C4.13401 7.95884 5.13681 8.96191 6.37402 8.96191C7.61119 8.96186 8.61403 7.95881 8.61426 6.72168C8.61426 5.48436 7.61133 4.48052 6.37402 4.48047Z" fill="#24619E"/>
+            </svg>
+            Language
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <button class="lang-option">日本語</button>
+            <button class="lang-option">ポルトガル語</button>
+            <button class="lang-option">韓国語</button>
+            <button class="lang-option">ベトナム語</button>
+            <button class="lang-option">英語</button>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -532,6 +578,15 @@
       if (target) target.classList.add('active');
       window.scrollTo({ top: 0 });
     }
+
+    function toggleLang(e) {
+      e.stopPropagation();
+      document.getElementById('langDropdown').classList.toggle('open');
+    }
+
+    document.addEventListener('click', () => {
+      document.getElementById('langDropdown').classList.remove('open');
+    });
   </script>
 
 </body>
