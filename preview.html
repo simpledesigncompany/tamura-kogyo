@@ -515,11 +515,20 @@
   <!-- トップページ -->
   <div class="page active" id="page-top">
     <img src="images/toppage-pc.jpg" alt="トップページ">
+    <div class="works-detail-hint">
+      事業内容ページのデザインも確認できます
+      <button onclick="showPage('business')">事業内容ページを見る →</button>
+    </div>
+  </div>
+
+  <!-- 事業内容（トップから遷移） -->
+  <div class="page" id="page-business">
+    <img src="images/business.jpg" alt="事業内容">
   </div>
 
   <!-- 求人情報一覧 -->
   <div class="page" id="page-works">
-    <img src="images/works-list-pc.jpg" alt="求人情報一覧">
+    <img src="images/works-list.jpg" alt="求人情報一覧">
     <div class="works-detail-hint">
       求人詳細ページのデザインも確認できます
       <button onclick="showPage('works-detail')">求人詳細ページを見る →</button>
@@ -528,7 +537,7 @@
 
   <!-- 求人詳細 -->
   <div class="page" id="page-works-detail">
-    <img src="images/works-detail.jpg" alt="求人詳細">
+    <img src="images/works-detail-new.jpg" alt="求人詳細">
   </div>
 
   <!-- お仕事をお探しの方へ -->
@@ -541,12 +550,14 @@
     <img src="images/companies.jpg" alt="人材をお探しの企業様へ">
   </div>
 
-  <!-- 会社案内（準備中） -->
+  <!-- 会社案内 -->
   <div class="page" id="page-about">
-    <div class="placeholder">
-      <div class="ph-title">会社案内</div>
-      <div class="ph-note">このページのデザインは現在準備中です</div>
-    </div>
+    <img src="images/about.jpg" alt="会社案内">
+  </div>
+
+  <!-- ポルトガル語版（言語切り替え用） -->
+  <div class="page" id="page-pt">
+    <img src="images/lang-pt.jpg" alt="Português">
   </div>
 
   <!-- お仕事の相談・登録（準備中） -->
@@ -653,6 +664,8 @@
       dot.className = 'lang-dot';
       el.prepend(dot);
       document.getElementById('langDropdown').classList.remove('open');
+      if (el.textContent.trim() === 'Português') showPage('pt');
+      else showPage('top');
     }
 
     document.addEventListener('click', () => {
