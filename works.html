@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>お仕事を探す | 株式会社田村工業</title>
+  <meta name="description" content="現在募集中のお仕事をご紹介します。製造・物流・介護など、さまざまな職種をご用意しています。お気軽にお問い合わせください。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="common.css">
+  <style>
+    /* ── Works List ── */
+    .works-section {
+      padding: 64px 0 80px;
+      background: #f4f9ff;
+      min-height: 60vh;
+    }
+    .works-section__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    /* ── Job Card ── */
+    .job-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 28px 24px;
+      box-shadow: 0 2px 12px rgba(36,97,158,0.07);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: box-shadow 0.2s;
+    }
+    .job-card:hover {
+      box-shadow: 0 6px 24px rgba(36,97,158,0.14);
+    }
+
+    .job-card__header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .job-card__title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #24619e;
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .job-card__title::before {
+      content: '';
+      display: inline-block;
+      flex-shrink: 0;
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(180deg, #ffaa00, #ff6868);
+      border-radius: 2px;
+      margin-top: 2px;
+    }
+    .job-card__thumb {
+      width: 100px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+      background: #e8f4ff;
+    }
+
+    .job-card__info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .job-card__row {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .job-card__label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #888;
+      white-space: nowrap;
+      min-width: 72px;
+    }
+    .job-card__label svg {
+      flex-shrink: 0;
+    }
+    .job-card__value {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+    }
+    .job-card__wage {
+      font-size: 22px;
+      font-weight: 700;
+      color: #24619e;
+      line-height: 1.3;
+    }
+    .job-card__wage-sub {
+      font-size: 13px;
+      color: #555;
+    }
+    .job-card__wage-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .job-card__wage-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .job-card__shift-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      background: rgba(36,97,158,0.08);
+      color: #24619e;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .job-card__benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .job-card__benefit-item {
+      font-size: 13px;
+      color: #444;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .job-card__benefit-item::before {
+      content: '・';
+      color: #24619e;
+      flex-shrink: 0;
+    }
+
+    .job-card__footer {
+      padding-top: 8px;
+      border-top: 1px solid #f0f4f8;
+    }
+    .btn-detail {
+      display: block;
+      width: 100%;
+      background: linear-gradient(193deg, #ffaa00 31%, #ff6868 88%);
+      color: #fff;
+      border: none;
+      border-radius: 40px;
+      padding: 13px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s;
+    }
+    .btn-detail:hover { opacity: 0.85; }
+
+    /* ── Contact CTA ── */
+    .works-cta {
+      background: linear-gradient(160deg, #e8f4ff 0%, #fff8ee 100%);
+      padding: 64px 0;
+    }
+    .works-cta__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .works-cta__content {
+      flex: 1;
+    }
+    .works-cta__title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #24619e;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .works-cta__body {
+      font-size: 15px;
+      color: #333;
+      line-height: 1.8;
+    }
+    .works-cta__btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 60px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: opacity 0.2s;
+    }
+    .btn-cta:hover { opacity: 0.85; }
+    .btn-cta--primary {
+      background: linear-gradient(193deg, #ffaa00 31%, #ff6868 88%);
+      color: #fff;
+      padding: 16px 40px;
+      font-size: 16px;
+    }
+    .btn-cta--tel {
+      background: #fff;
+      color: #24619e;
+      border: 2px solid #24619e !important;
+      padding: 14px 32px;
+      font-size: 16px;
+    }
+
+    /* ── SP ── */
+    @media (max-width: 768px) {
+      .works-section__inner {
+        padding: 0 16px;
+      }
+      .works-section {
+        padding: 40px 0 64px;
+      }
+      .works-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .job-card {
+        padding: 20px 16px 18px;
+      }
+      .job-card__thumb {
+        width: 80px;
+        height: 64px;
+      }
+      .job-card__wage {
+        font-size: 20px;
+      }
+      .works-cta__inner {
+        flex-direction: column;
+        padding: 0 20px;
+      }
+      .works-cta__btns {
+        width: 100%;
+        flex-direction: column;
+      }
+      .btn-cta {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+  <!-- Google Translate Widget -->
+  <style>
+    .goog-te-banner-frame { display: none !important; }
+    body { top: 0 !important; }
+    .skiptranslate { display: none !important; }
+    #goog-gt-tt { display: none !important; }
+    .goog-te-gadget {
+      font-family: inherit !important;
+      font-size: 13px !important;
+      color: #24619e !important;
+    }
+    .goog-te-gadget select {
+      border: 1px solid rgba(0,74,109,0.2);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: #24619e;
+      background: #fff;
+      cursor: pointer;
+      outline: none;
+    }
+    #google-translate-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Global Nav -->
+  <nav class="site-nav">
+    <a class="nav-logo" href="index.html">
+      <img class="logo-img" src="images/logo.png" alt="田村工業ロゴ">
+      <div class="logo-text">
+        <span class="logo-sub" data-ja="人材派遣 / アウトソーシング" data-pt="派遣 / Terceirização">人材派遣 / アウトソーシング</span>
+        <span class="logo-main">株式会社 田村工業</span>
+      </div>
+    </a>
+
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a class="nav-link" href="seekers.html" data-ja="お仕事をお探しの方へ" data-pt="Para quem busca emprego">お仕事をお探しの方へ</a></li>
+        <li><a class="nav-link" href="companies.html" data-ja="企業様へ" data-pt="Para empresas">企業様へ</a></li>
+        <li><a class="nav-link" href="about.html" data-ja="会社案内" data-pt="Sobre nós">会社案内</a></li>
+      </ul>
+      <div class="btn-group">
+        <div class="btn-wrap">
+          <span class="btn-note" data-ja="\ 日本人の方もどうぞ /" data-pt="\ Japoneses também são bem-vindos /">\ 日本人の方もどうぞ /</span>
+          <a class="btn-primary" href="works.html" data-ja="お仕事を探す" data-pt="Buscar emprego">お仕事を探す</a>
+        </div>
+        <a class="btn-secondary-wrap" href="contact-seekers.html">
+          <span class="btn-secondary-inner" data-ja="お仕事の相談・登録" data-pt="Consulta e cadastro">お仕事の相談・登録</span>
+        </a>
+        <div id="google_translate_element" id="google-translate-wrapper"></div>
+      </div>
+    </div>
+
+    <!-- SP Hamburger -->
+    <button class="nav-hamburger" id="navHamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- SP Menu Overlay -->
+  <div class="nav-menu-overlay" id="navMenuOverlay">
+    <div class="nav-menu-inner">
+      <ul class="nav-menu-links">
+        <li><a href="seekers.html" data-ja="お仕事をお探しの方へ" data-pt="Para quem busca emprego">お仕事をお探しの方へ</a></li>
+        <li><a href="companies.html" data-ja="企業様へ" data-pt="Para empresas">企業様へ</a></li>
+        <li><a href="about.html" data-ja="会社案内" data-pt="Sobre nós">会社案内</a></li>
+        <li><a href="works.html" data-ja="お仕事を探す" data-pt="Buscar emprego">お仕事を探す</a></li>
+        <li><a href="contact-seekers.html" data-ja="お仕事の相談・登録" data-pt="Consulta e cadastro">お仕事の相談・登録</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="page-header__inner">
+      <p class="page-header__label" data-ja="現在募集中のお仕事" data-pt="Vagas disponíveis agora">現在募集中のお仕事</p>
+      <h1 class="page-header__title" data-ja="お仕事を探す" data-pt="Buscar emprego">お仕事を探す</h1>
+      <p class="page-header__lead" data-ja="現在募集中のお仕事をご紹介します。お気軽にお問い合わせください。" data-pt="Apresentamos as vagas disponíveis atualmente. Fique à vontade para entrar em contato.">現在募集中のお仕事をご紹介します。お気軽にお問い合わせください。</p>
+    </div>
+  </div>
+
+  <!-- Works List -->
+  <section class="works-section">
+    <div class="works-section__inner">
+      <div class="works-grid">
+
+        <!-- Job Card 1 -->
+        <div class="job-card">
+          <div class="job-card__header">
+            <h2 class="job-card__title" data-ja="食品製造工場での盛り付け作業" data-pt="Trabalho de emplatamento em fábrica de alimentos">食品製造工場での盛り付け作業</h2>
+            <img class="job-card__thumb" src="images/job-food.jpg" alt="食品製造" onerror="this.style.background='#e8f4ff';this.removeAttribute('src')">
+          </div>
+          <div class="job-card__info">
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.5 0C4.01472 0 2 2.01472 2 4.5C2 7.875 6.5 13 6.5 13C6.5 13 11 7.875 11 4.5C11 2.01472 8.98528 0 6.5 0ZM6.5 6C5.67157 6 5 5.32843 5 4.5C5 3.67157 5.67157 3 6.5 3C7.32843 3 8 3.67157 8 4.5C8 5.32843 7.32843 6 6.5 6Z" fill="#aaa"/>
+                  <path d="M1 13.5C1 13.5 3 15 6.5 15C10 15 12 13.5 12 13.5" stroke="#aaa" stroke-linecap="round"/>
+                </svg>
+                <span data-ja="勤務地" data-pt="Local">勤務地</span>
+              </span>
+              <span class="job-card__value" data-ja="兵庫県宝塚市" data-pt="Cidade de Takarazuka, Hyogo">兵庫県宝塚市</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="7" cy="7" r="6" stroke="#aaa" stroke-width="1.5"/>
+                  <path d="M7 4V7.5L9 9" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span data-ja="時給" data-pt="Salário/h">時給</span>
+              </span>
+              <div class="job-card__wage-block">
+                <span class="job-card__wage" data-ja="1,200円〜" data-pt="¥1.200〜">1,200円〜</span>
+              </div>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="2" width="12" height="11" rx="2" stroke="#aaa" stroke-width="1.5"/>
+                  <path d="M1 6H13" stroke="#aaa" stroke-width="1.5"/>
+                  <path d="M4 1V3M10 1V3" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span data-ja="勤務時間" data-pt="Horário">勤務時間</span>
+              </span>
+              <div class="job-card__value">
+                <div class="job-card__wage-row">
+                  <span class="job-card__shift-badge" data-ja="日勤" data-pt="Diurno">日勤</span>
+                  <span data-ja="5:00〜14:00 / 9:00〜18:00 / 11:00〜20:00" data-pt="5:00〜14:00 / 9:00〜18:00 / 11:00〜20:00">5:00〜14:00 / 9:00〜18:00 / 11:00〜20:00</span>
+                </div>
+                <div class="job-card__wage-row" style="margin-top:4px;">
+                  <span class="job-card__shift-badge" data-ja="夜勤" data-pt="Noturno">夜勤</span>
+                  <span data-ja="2:00〜11:00" data-pt="2:00〜11:00">2:00〜11:00</span>
+                </div>
+              </div>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="7" cy="7" r="6" stroke="#aaa" stroke-width="1.5"/>
+                  <path d="M5 7H9M7 5V9" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span data-ja="休憩時間" data-pt="Intervalo">休憩時間</span>
+              </span>
+              <span class="job-card__value" data-ja="1時間" data-pt="1 hora">1時間</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 1L8.5 4.5H12.5L9.5 6.5L10.5 10.5L7 8.5L3.5 10.5L4.5 6.5L1.5 4.5H5.5L7 1Z" stroke="#aaa" stroke-width="1.3" stroke-linejoin="round"/>
+                </svg>
+                <span data-ja="福利厚生" data-pt="Benefícios">福利厚生</span>
+              </span>
+              <div class="job-card__benefits">
+                <span class="job-card__benefit-item" data-ja="各種社会保険あり" data-pt="Seguro social incluído">各種社会保険あり</span>
+                <span class="job-card__benefit-item" data-ja="無遅刻・無欠勤の手当あり" data-pt="Bônus por pontualidade e assiduidade">無遅刻・無欠勤の手当あり</span>
+                <span class="job-card__benefit-item" data-ja="作業服貸与" data-pt="Uniforme fornecido">作業服貸与</span>
+                <span class="job-card__benefit-item" data-ja="家具・家電付きの宿舎あり" data-pt="Alojamento com móveis e eletrodomésticos">家具・家電付きの宿舎あり</span>
+              </div>
+            </div>
+          </div>
+          <div class="job-card__footer">
+            <a class="btn-detail" href="works-detail.html" data-ja="詳しく見る" data-pt="Ver detalhes">詳しく見る</a>
+          </div>
+        </div>
+
+        <!-- Job Card 2 -->
+        <div class="job-card">
+          <div class="job-card__header">
+            <h2 class="job-card__title" data-ja="鍍金工程全般作業" data-pt="Trabalho geral de galvanização">鍍金工程全般作業</h2>
+            <img class="job-card__thumb" src="images/job-metal.jpg" alt="鍍金工程" onerror="this.style.background='#e8f4ff';this.removeAttribute('src')">
+          </div>
+          <div class="job-card__info">
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="13" height="15" viewBox="0 0 13 15" fill="none"><path d="M6.5 0C4.01472 0 2 2.01472 2 4.5C2 7.875 6.5 13 6.5 13C6.5 13 11 7.875 11 4.5C11 2.01472 8.98528 0 6.5 0ZM6.5 6C5.67157 6 5 5.32843 5 4.5C5 3.67157 5.67157 3 6.5 3C7.32843 3 8 3.67157 8 4.5C8 5.32843 7.32843 6 6.5 6Z" fill="#aaa"/><path d="M1 13.5C1 13.5 3 15 6.5 15C10 15 12 13.5 12 13.5" stroke="#aaa" stroke-linecap="round"/></svg>
+                <span data-ja="勤務地" data-pt="Local">勤務地</span>
+              </span>
+              <span class="job-card__value" data-ja="大阪府/兵庫県" data-pt="Osaka/Hyogo">大阪府/兵庫県</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#aaa" stroke-width="1.5"/><path d="M7 4V7.5L9 9" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="時給" data-pt="Salário/h">時給</span>
+              </span>
+              <div class="job-card__wage-block">
+                <div class="job-card__wage-row">
+                  <span class="job-card__shift-badge" data-ja="日勤" data-pt="Diurno">日勤</span>
+                  <span class="job-card__wage" data-ja="1,400円〜" data-pt="¥1.400〜">1,400円〜</span>
+                </div>
+                <div class="job-card__wage-row" style="margin-top:4px;">
+                  <span class="job-card__shift-badge" data-ja="夜勤" data-pt="Noturno">夜勤</span>
+                  <span class="job-card__wage" data-ja="1,625円〜1,875円" data-pt="¥1.625〜¥1.875">1,625円〜1,875円</span>
+                </div>
+              </div>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="2" stroke="#aaa" stroke-width="1.5"/><path d="M1 6H13" stroke="#aaa" stroke-width="1.5"/><path d="M4 1V3M10 1V3" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="勤務時間" data-pt="Horário">勤務時間</span>
+              </span>
+              <div class="job-card__value">
+                <div class="job-card__wage-row">
+                  <span class="job-card__shift-badge" data-ja="日勤" data-pt="Diurno">日勤</span>
+                  <span data-ja="8:00〜17:00" data-pt="8:00〜17:00">8:00〜17:00</span>
+                </div>
+                <div class="job-card__wage-row" style="margin-top:4px;">
+                  <span class="job-card__shift-badge" data-ja="夜勤" data-pt="Noturno">夜勤</span>
+                  <span data-ja="20:00〜5:00" data-pt="20:00〜5:00">20:00〜5:00</span>
+                </div>
+              </div>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#aaa" stroke-width="1.5"/><path d="M5 7H9M7 5V9" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="休憩時間" data-pt="Intervalo">休憩時間</span>
+              </span>
+              <span class="job-card__value" data-ja="1時間" data-pt="1 hora">1時間</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L8.5 4.5H12.5L9.5 6.5L10.5 10.5L7 8.5L3.5 10.5L4.5 6.5L1.5 4.5H5.5L7 1Z" stroke="#aaa" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                <span data-ja="福利厚生" data-pt="Benefícios">福利厚生</span>
+              </span>
+              <div class="job-card__benefits">
+                <span class="job-card__benefit-item" data-ja="交通費支給（会社の規定あり）" data-pt="Vale-transporte (conforme regras da empresa)">交通費支給（会社の規定あり）</span>
+                <span class="job-card__benefit-item" data-ja="無遅刻・無欠勤の手当あり" data-pt="Bônus por pontualidade e assiduidade">無遅刻・無欠勤の手当あり</span>
+                <span class="job-card__benefit-item" data-ja="制服貸与" data-pt="Uniforme fornecido">制服貸与</span>
+                <span class="job-card__benefit-item" data-ja="有給休暇" data-pt="Férias remuneradas">有給休暇</span>
+                <span class="job-card__benefit-item" data-ja="各種社会保険あり" data-pt="Seguro social incluído">各種社会保険あり</span>
+              </div>
+            </div>
+          </div>
+          <div class="job-card__footer">
+            <a class="btn-detail" href="works-detail.html" data-ja="詳しく見る" data-pt="Ver detalhes">詳しく見る</a>
+          </div>
+        </div>
+
+        <!-- Job Card 3 -->
+        <div class="job-card">
+          <div class="job-card__header">
+            <h2 class="job-card__title" data-ja="未経験者・中高年者歓迎！介護ヘルパー" data-pt="Auxiliar de cuidados – iniciantes e idosos bem-vindos!">未経験者・中高年者歓迎！介護ヘルパー</h2>
+            <img class="job-card__thumb" src="images/job-care.jpg" alt="介護ヘルパー" onerror="this.style.background='#e8f4ff';this.removeAttribute('src')">
+          </div>
+          <div class="job-card__info">
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="13" height="15" viewBox="0 0 13 15" fill="none"><path d="M6.5 0C4.01472 0 2 2.01472 2 4.5C2 7.875 6.5 13 6.5 13C6.5 13 11 7.875 11 4.5C11 2.01472 8.98528 0 6.5 0ZM6.5 6C5.67157 6 5 5.32843 5 4.5C5 3.67157 5.67157 3 6.5 3C7.32843 3 8 3.67157 8 4.5C8 5.32843 7.32843 6 6.5 6Z" fill="#aaa"/><path d="M1 13.5C1 13.5 3 15 6.5 15C10 15 12 13.5 12 13.5" stroke="#aaa" stroke-linecap="round"/></svg>
+                <span data-ja="勤務地" data-pt="Local">勤務地</span>
+              </span>
+              <span class="job-card__value" data-ja="兵庫県西宮市、三田市" data-pt="Nishinomiya, Sanda, Hyogo">兵庫県西宮市、三田市</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#aaa" stroke-width="1.5"/><path d="M7 4V7.5L9 9" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="時給" data-pt="Salário/h">時給</span>
+              </span>
+              <span class="job-card__wage" data-ja="1,300円" data-pt="¥1.300">1,300円</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="2" stroke="#aaa" stroke-width="1.5"/><path d="M1 6H13" stroke="#aaa" stroke-width="1.5"/><path d="M4 1V3M10 1V3" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="勤務時間" data-pt="Horário">勤務時間</span>
+              </span>
+              <span class="job-card__value" data-ja="9:00〜18:00" data-pt="9:00〜18:00">9:00〜18:00</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#aaa" stroke-width="1.5"/><path d="M5 7H9M7 5V9" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="休憩時間" data-pt="Intervalo">休憩時間</span>
+              </span>
+              <span class="job-card__value" data-ja="1時間" data-pt="1 hora">1時間</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L8.5 4.5H12.5L9.5 6.5L10.5 10.5L7 8.5L3.5 10.5L4.5 6.5L1.5 4.5H5.5L7 1Z" stroke="#aaa" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                <span data-ja="福利厚生" data-pt="Benefícios">福利厚生</span>
+              </span>
+              <div class="job-card__benefits">
+                <span class="job-card__benefit-item" data-ja="各種社会保険あり" data-pt="Seguro social incluído">各種社会保険あり</span>
+                <span class="job-card__benefit-item" data-ja="交通費支給（会社の規定あり）" data-pt="Vale-transporte (conforme regras)">交通費支給（会社の規定あり）</span>
+                <span class="job-card__benefit-item" data-ja="家賃補助有" data-pt="Subsídio de aluguel">家賃補助有</span>
+                <span class="job-card__benefit-item" data-ja="水道・ガス料金無料" data-pt="Água e gás gratuitos">水道・ガス料金無料</span>
+                <span class="job-card__benefit-item" data-ja="一部家具・家電付" data-pt="Alguns móveis e eletrodomésticos incluídos">一部家具・家電付</span>
+              </div>
+            </div>
+          </div>
+          <div class="job-card__footer">
+            <a class="btn-detail" href="works-detail.html" data-ja="詳しく見る" data-pt="Ver detalhes">詳しく見る</a>
+          </div>
+        </div>
+
+        <!-- Job Card 4 -->
+        <div class="job-card">
+          <div class="job-card__header">
+            <h2 class="job-card__title" data-ja="院内調理" data-pt="Serviços de alimentação hospitalar">院内調理</h2>
+            <img class="job-card__thumb" src="images/job-hospital.jpg" alt="院内調理" onerror="this.style.background='#e8f4ff';this.removeAttribute('src')">
+          </div>
+          <div class="job-card__info">
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="13" height="15" viewBox="0 0 13 15" fill="none"><path d="M6.5 0C4.01472 0 2 2.01472 2 4.5C2 7.875 6.5 13 6.5 13C6.5 13 11 7.875 11 4.5C11 2.01472 8.98528 0 6.5 0ZM6.5 6C5.67157 6 5 5.32843 5 4.5C5 3.67157 5.67157 3 6.5 3C7.32843 3 8 3.67157 8 4.5C8 5.32843 7.32843 6 6.5 6Z" fill="#aaa"/><path d="M1 13.5C1 13.5 3 15 6.5 15C10 15 12 13.5 12 13.5" stroke="#aaa" stroke-linecap="round"/></svg>
+                <span data-ja="勤務地" data-pt="Local">勤務地</span>
+              </span>
+              <span class="job-card__value" data-ja="兵庫県三田市" data-pt="Sanda, Hyogo">兵庫県三田市</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#aaa" stroke-width="1.5"/><path d="M7 4V7.5L9 9" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="時給" data-pt="Salário/h">時給</span>
+              </span>
+              <span class="job-card__wage" data-ja="1,200円" data-pt="¥1.200">1,200円</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="2" stroke="#aaa" stroke-width="1.5"/><path d="M1 6H13" stroke="#aaa" stroke-width="1.5"/><path d="M4 1V3M10 1V3" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="勤務時間" data-pt="Horário">勤務時間</span>
+              </span>
+              <span class="job-card__value" data-ja="9:00〜18:00" data-pt="9:00〜18:00">9:00〜18:00</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#aaa" stroke-width="1.5"/><path d="M5 7H9M7 5V9" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="休憩時間" data-pt="Intervalo">休憩時間</span>
+              </span>
+              <span class="job-card__value" data-ja="1時間" data-pt="1 hora">1時間</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L8.5 4.5H12.5L9.5 6.5L10.5 10.5L7 8.5L3.5 10.5L4.5 6.5L1.5 4.5H5.5L7 1Z" stroke="#aaa" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                <span data-ja="福利厚生" data-pt="Benefícios">福利厚生</span>
+              </span>
+              <div class="job-card__benefits">
+                <span class="job-card__benefit-item" data-ja="各種社会保険あり" data-pt="Seguro social incluído">各種社会保険あり</span>
+                <span class="job-card__benefit-item" data-ja="交通費支給（会社の規定あり）" data-pt="Vale-transporte (conforme regras)">交通費支給（会社の規定あり）</span>
+              </div>
+            </div>
+          </div>
+          <div class="job-card__footer">
+            <a class="btn-detail" href="works-detail.html" data-ja="詳しく見る" data-pt="Ver detalhes">詳しく見る</a>
+          </div>
+        </div>
+
+        <!-- Job Card 5 -->
+        <div class="job-card">
+          <div class="job-card__header">
+            <h2 class="job-card__title" data-ja="産業廃棄物積み込み作業" data-pt="Trabalho de carregamento de resíduos industriais">産業廃棄物積み込み作業</h2>
+            <img class="job-card__thumb" src="images/job-waste.jpg" alt="産業廃棄物" onerror="this.style.background='#e8f4ff';this.removeAttribute('src')">
+          </div>
+          <div class="job-card__info">
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="13" height="15" viewBox="0 0 13 15" fill="none"><path d="M6.5 0C4.01472 0 2 2.01472 2 4.5C2 7.875 6.5 13 6.5 13C6.5 13 11 7.875 11 4.5C11 2.01472 8.98528 0 6.5 0ZM6.5 6C5.67157 6 5 5.32843 5 4.5C5 3.67157 5.67157 3 6.5 3C7.32843 3 8 3.67157 8 4.5C8 5.32843 7.32843 6 6.5 6Z" fill="#aaa"/><path d="M1 13.5C1 13.5 3 15 6.5 15C10 15 12 13.5 12 13.5" stroke="#aaa" stroke-linecap="round"/></svg>
+                <span data-ja="勤務地" data-pt="Local">勤務地</span>
+              </span>
+              <span class="job-card__value" data-ja="兵庫県尼崎市" data-pt="Amagasaki, Hyogo">兵庫県尼崎市</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="2" stroke="#aaa" stroke-width="1.5"/><path d="M1 6H13" stroke="#aaa" stroke-width="1.5"/><path d="M4 1V3M10 1V3" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="勤務時間" data-pt="Horário">勤務時間</span>
+              </span>
+              <span class="job-card__value" data-ja="6:00〜" data-pt="A partir das 6:00">6:00〜</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L8.5 4.5H12.5L9.5 6.5L10.5 10.5L7 8.5L3.5 10.5L4.5 6.5L1.5 4.5H5.5L7 1Z" stroke="#aaa" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                <span data-ja="福利厚生" data-pt="Benefícios">福利厚生</span>
+              </span>
+              <div class="job-card__benefits">
+                <span class="job-card__benefit-item" data-ja="各種社会保険あり" data-pt="Seguro social incluído">各種社会保険あり</span>
+                <span class="job-card__benefit-item" data-ja="交通費支給（会社の規定あり）" data-pt="Vale-transporte (conforme regras)">交通費支給（会社の規定あり）</span>
+                <span class="job-card__benefit-item" data-ja="制服貸与" data-pt="Uniforme fornecido">制服貸与</span>
+              </div>
+            </div>
+          </div>
+          <div class="job-card__footer">
+            <a class="btn-detail" href="works-detail.html" data-ja="詳しく見る" data-pt="Ver detalhes">詳しく見る</a>
+          </div>
+        </div>
+
+        <!-- Job Card 6 -->
+        <div class="job-card">
+          <div class="job-card__header">
+            <h2 class="job-card__title" data-ja="鍍金工程全般作業" data-pt="Trabalho geral de galvanização">鍍金工程全般作業</h2>
+            <img class="job-card__thumb" src="images/job-metal2.jpg" alt="鍍金工程" onerror="this.style.background='#e8f4ff';this.removeAttribute('src')">
+          </div>
+          <div class="job-card__info">
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="13" height="15" viewBox="0 0 13 15" fill="none"><path d="M6.5 0C4.01472 0 2 2.01472 2 4.5C2 7.875 6.5 13 6.5 13C6.5 13 11 7.875 11 4.5C11 2.01472 8.98528 0 6.5 0ZM6.5 6C5.67157 6 5 5.32843 5 4.5C5 3.67157 5.67157 3 6.5 3C7.32843 3 8 3.67157 8 4.5C8 5.32843 7.32843 6 6.5 6Z" fill="#aaa"/><path d="M1 13.5C1 13.5 3 15 6.5 15C10 15 12 13.5 12 13.5" stroke="#aaa" stroke-linecap="round"/></svg>
+                <span data-ja="勤務地" data-pt="Local">勤務地</span>
+              </span>
+              <span class="job-card__value" data-ja="大阪府" data-pt="Osaka">大阪府</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#aaa" stroke-width="1.5"/><path d="M7 4V7.5L9 9" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="時給" data-pt="Salário/h">時給</span>
+              </span>
+              <div class="job-card__wage-block">
+                <div class="job-card__wage-row">
+                  <span class="job-card__shift-badge" data-ja="日勤" data-pt="Diurno">日勤</span>
+                  <span class="job-card__wage" data-ja="1,300円〜" data-pt="¥1.300〜">1,300円〜</span>
+                </div>
+                <div class="job-card__wage-row" style="margin-top:4px;">
+                  <span class="job-card__shift-badge" data-ja="夜勤" data-pt="Noturno">夜勤</span>
+                  <span class="job-card__wage" data-ja="1,625円" data-pt="¥1.625">1,625円</span>
+                </div>
+              </div>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="2" stroke="#aaa" stroke-width="1.5"/><path d="M1 6H13" stroke="#aaa" stroke-width="1.5"/><path d="M4 1V3M10 1V3" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="勤務時間" data-pt="Horário">勤務時間</span>
+              </span>
+              <div class="job-card__value">
+                <div class="job-card__wage-row">
+                  <span class="job-card__shift-badge" data-ja="日勤" data-pt="Diurno">日勤</span>
+                  <span data-ja="8:00〜17:00" data-pt="8:00〜17:00">8:00〜17:00</span>
+                </div>
+                <div class="job-card__wage-row" style="margin-top:4px;">
+                  <span class="job-card__shift-badge" data-ja="夜勤" data-pt="Noturno">夜勤</span>
+                  <span data-ja="20:00〜5:00" data-pt="20:00〜5:00">20:00〜5:00</span>
+                </div>
+              </div>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#aaa" stroke-width="1.5"/><path d="M5 7H9M7 5V9" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="休憩時間" data-pt="Intervalo">休憩時間</span>
+              </span>
+              <span class="job-card__value" data-ja="1時間" data-pt="1 hora">1時間</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L8.5 4.5H12.5L9.5 6.5L10.5 10.5L7 8.5L3.5 10.5L4.5 6.5L1.5 4.5H5.5L7 1Z" stroke="#aaa" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                <span data-ja="福利厚生" data-pt="Benefícios">福利厚生</span>
+              </span>
+              <div class="job-card__benefits">
+                <span class="job-card__benefit-item" data-ja="交通費支給（会社の規定あり）" data-pt="Vale-transporte (conforme regras)">交通費支給（会社の規定あり）</span>
+                <span class="job-card__benefit-item" data-ja="無遅刻・無欠勤の手当あり" data-pt="Bônus por pontualidade e assiduidade">無遅刻・無欠勤の手当あり</span>
+                <span class="job-card__benefit-item" data-ja="制服貸与" data-pt="Uniforme fornecido">制服貸与</span>
+                <span class="job-card__benefit-item" data-ja="有給休暇" data-pt="Férias remuneradas">有給休暇</span>
+                <span class="job-card__benefit-item" data-ja="各種社会保険あり" data-pt="Seguro social incluído">各種社会保険あり</span>
+              </div>
+            </div>
+          </div>
+          <div class="job-card__footer">
+            <a class="btn-detail" href="works-detail.html" data-ja="詳しく見る" data-pt="Ver detalhes">詳しく見る</a>
+          </div>
+        </div>
+
+        <!-- Job Card 7 -->
+        <div class="job-card" style="grid-column: 1 / -1; max-width: 580px;">
+          <div class="job-card__header">
+            <h2 class="job-card__title" data-ja="食品製造工場での準備作業" data-pt="Trabalho de preparo em fábrica de alimentos">食品製造工場での準備作業</h2>
+            <img class="job-card__thumb" src="images/job-food2.jpg" alt="食品製造工場" onerror="this.style.background='#e8f4ff';this.removeAttribute('src')">
+          </div>
+          <div class="job-card__info">
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="13" height="15" viewBox="0 0 13 15" fill="none"><path d="M6.5 0C4.01472 0 2 2.01472 2 4.5C2 7.875 6.5 13 6.5 13C6.5 13 11 7.875 11 4.5C11 2.01472 8.98528 0 6.5 0ZM6.5 6C5.67157 6 5 5.32843 5 4.5C5 3.67157 5.67157 3 6.5 3C7.32843 3 8 3.67157 8 4.5C8 5.32843 7.32843 6 6.5 6Z" fill="#aaa"/><path d="M1 13.5C1 13.5 3 15 6.5 15C10 15 12 13.5 12 13.5" stroke="#aaa" stroke-linecap="round"/></svg>
+                <span data-ja="勤務地" data-pt="Local">勤務地</span>
+              </span>
+              <span class="job-card__value" data-ja="兵庫県宝塚市" data-pt="Takarazuka, Hyogo">兵庫県宝塚市</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#aaa" stroke-width="1.5"/><path d="M7 4V7.5L9 9" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="時給" data-pt="Salário/h">時給</span>
+              </span>
+              <span class="job-card__wage" data-ja="900円〜1,000円" data-pt="¥900〜¥1.000">900円〜1,000円</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="2" stroke="#aaa" stroke-width="1.5"/><path d="M1 6H13" stroke="#aaa" stroke-width="1.5"/><path d="M4 1V3M10 1V3" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="勤務時間" data-pt="Horário">勤務時間</span>
+              </span>
+              <span class="job-card__value" data-ja="6:00〜15:00 / 7:00〜16:00" data-pt="6:00〜15:00 / 7:00〜16:00">6:00〜15:00 / 7:00〜16:00</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#aaa" stroke-width="1.5"/><path d="M5 7H9M7 5V9" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span data-ja="休憩時間" data-pt="Intervalo">休憩時間</span>
+              </span>
+              <span class="job-card__value" data-ja="1時間" data-pt="1 hora">1時間</span>
+            </div>
+            <div class="job-card__row">
+              <span class="job-card__label">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L8.5 4.5H12.5L9.5 6.5L10.5 10.5L7 8.5L3.5 10.5L4.5 6.5L1.5 4.5H5.5L7 1Z" stroke="#aaa" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                <span data-ja="福利厚生" data-pt="Benefícios">福利厚生</span>
+              </span>
+              <div class="job-card__benefits">
+                <span class="job-card__benefit-item" data-ja="各種社会保険あり" data-pt="Seguro social incluído">各種社会保険あり</span>
+                <span class="job-card__benefit-item" data-ja="無遅刻・無欠勤の手当あり" data-pt="Bônus por pontualidade e assiduidade">無遅刻・無欠勤の手当あり</span>
+                <span class="job-card__benefit-item" data-ja="作業服貸与" data-pt="Uniforme fornecido">作業服貸与</span>
+                <span class="job-card__benefit-item" data-ja="家電付きの宿舎あり" data-pt="Alojamento com eletrodomésticos">家電付きの宿舎あり</span>
+              </div>
+            </div>
+          </div>
+          <div class="job-card__footer">
+            <a class="btn-detail" href="works-detail.html" data-ja="詳しく見る" data-pt="Ver detalhes">詳しく見る</a>
+          </div>
+        </div>
+
+      </div><!-- /.works-grid -->
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="works-cta">
+    <div class="works-cta__inner">
+      <div class="works-cta__content">
+        <h2 class="works-cta__title" data-ja="気になる求人はありましたか？<br>お気軽にご相談ください。" data-pt="Encontrou uma vaga de interesse?<br>Fique à vontade para nos consultar.">気になる求人はありましたか？<br>お気軽にご相談ください。</h2>
+        <p class="works-cta__body" data-ja="掲載していない求人も多数ございます。まずはお問い合わせください。" data-pt="Temos muitas outras vagas não listadas. Entre em contato conosco primeiro.">掲載していない求人も多数ございます。まずはお問い合わせください。</p>
+      </div>
+      <div class="works-cta__btns">
+        <a class="btn-cta btn-cta--primary" href="contact-seekers.html" data-ja="お仕事の相談・登録" data-pt="Consulta e cadastro">お仕事の相談・登録</a>
+        <a class="btn-cta btn-cta--tel" href="tel:0797722900">
+          <svg width="18" height="18" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right:8px;flex-shrink:0;">
+            <path d="M27.9465 1.39394L22.056 0.0345961C21.416 -0.112666 20.759 0.221506 20.4984 0.821884L17.7797 7.1655C17.5418 7.72057 17.7004 8.37192 18.1705 8.7514L21.6029 11.5607C19.5639 15.905 16.0012 19.5186 11.5664 21.5972L8.75705 18.1649C8.3719 17.6948 7.72621 17.5362 7.17115 17.7741L0.827526 20.4928C0.221484 20.759 -0.112689 21.416 0.0345736 22.056L1.39392 27.9465C1.53552 28.5582 2.07926 29 2.71928 29C17.2247 29 29 17.2473 29 2.71931C29 2.08494 28.5639 1.53554 27.9465 1.39394Z" fill="#24619E"/>
+          </svg>
+          0797-72-2900
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <svg class="footer-bg-svg" width="1440" height="473" viewBox="0 0 1440 473" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g opacity="0.4" filter="url(#filter0_f_215_6688)">
+        <path d="M0.484742 478.163L1440.5 478.164L1440.5 393.657C1370.99 374.458 1194.69 411.595 1073.34 407.192C774.135 396.337 430.775 120.616 0.488631 134.508L0.484742 478.163Z" fill="url(#paint0_linear_215_6688)"/>
+      </g>
+      <defs>
+        <filter id="filter0_f_215_6688" x="-133.516" y="0" width="1708.02" height="612.164" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+          <feGaussianBlur stdDeviation="67" result="effect1_foregroundBlur_215_6688"/>
+        </filter>
+        <linearGradient id="paint0_linear_215_6688" x1="552.181" y1="-155.019" x2="1017.24" y2="705.39" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#FFBB76"/>
+          <stop offset="1" stop-color="#FFDB4B"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-company">
+          <div class="footer-tagline">
+            日本、関西で働けるお仕事を紹介します。<br>
+            関西の人材派遣アウトソーシングなら株式会社田村工業へ。
+          </div>
+          <div class="footer-company-name">株式会社 田村工業</div>
+          <div class="footer-address">〒665-0056 兵庫県宝塚市中野町6番6号 三幸建設ビル202号</div>
+        </div>
+        <div class="footer-news">
+          <h3 data-ja="お知らせ" data-pt="Notícias">お知らせ</h3>
+          <ul>
+            <li>2026.12.15　年末年始休業のお知らせ</li>
+            <li>2026.12.01　ホームページをリニューアルしました</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-contact-card">
+        <div class="footer-web-contact">
+          <div class="contact-heading" data-ja="Webサイトからのお問い合わせ" data-pt="Contato pelo site">Webサイトからのお問い合わせ</div>
+          <a href="contact-seekers.html" class="btn-contact-form" data-ja="お問い合わせフォームはこちら" data-pt="Acesse o formulário de contato">お問い合わせフォームはこちら</a>
+        </div>
+        <div class="footer-tel-contact">
+          <div class="contact-heading" data-ja="お電話からのお問い合わせ" data-pt="Contato por telefone">お電話からのお問い合わせ</div>
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+            <a href="tel:0797722900" class="tel-number">
+              <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+                <path d="M27.9465 1.39394L22.056 0.0345961C21.416 -0.112666 20.759 0.221506 20.4984 0.821884L17.7797 7.1655C17.5418 7.72057 17.7004 8.37192 18.1705 8.7514L21.6029 11.5607C19.5639 15.905 16.0012 19.5186 11.5664 21.5972L8.75705 18.1649C8.3719 17.6948 7.72621 17.5362 7.17115 17.7741L0.827526 20.4928C0.221484 20.759 -0.112689 21.416 0.0345736 22.056L1.39392 27.9465C1.53552 28.5582 2.07926 29 2.71928 29C17.2247 29 29 17.2473 29 2.71931C29 2.08494 28.5639 1.53554 27.9465 1.39394Z" fill="#24619E"/>
+              </svg>
+              0797-72-2900
+            </a>
+            <div class="tel-hours">
+              <div><span class="hours-badge">平日</span>8：00〜18：00</div>
+              <div><span class="hours-badge">土曜</span>8：00〜12：00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <a href="privacy.html" data-ja="プライバシーポリシー" data-pt="Política de Privacidade">プライバシーポリシー</a>
+        <a href="sitemap.html" data-ja="サイトマップ" data-pt="Mapa do site">サイトマップ</a>
+        <span>© 2026 株式会社田村工業 All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="common.js"></script>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'ja',
+        includedLanguages: 'pt,es,vi,ne,my,en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
