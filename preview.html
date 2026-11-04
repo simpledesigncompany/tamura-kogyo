@@ -26,11 +26,13 @@
     }
     .preview-bar .info { color: #ccc; }
     .preview-bar .hint { color: #555; }
-    .view-toggle {
+    .view-toggle,
+    .content-toggle {
       display: flex;
       gap: 4px;
     }
-    .view-toggle button {
+    .view-toggle button,
+    .content-toggle button {
       background: #333;
       color: #888;
       border: none;
@@ -39,9 +41,45 @@
       font-size: 11px;
       cursor: pointer;
     }
-    .view-toggle button.active {
+    .view-toggle button.active,
+    .content-toggle button.active {
       background: #555;
       color: #fff;
+    }
+    .preview-bar-sep {
+      width: 1px;
+      height: 14px;
+      background: #333;
+      align-self: center;
+    }
+
+    /* ── Code View ── */
+    .code-view {
+      display: none;
+    }
+    body.code-mode .code-view {
+      display: flex;
+      justify-content: center;
+      background: #ccc;
+      min-height: calc(100vh - 34px);
+    }
+    body.code-mode .site-nav,
+    body.code-mode .page,
+    body.code-mode .site-footer { display: none !important; }
+
+    .code-iframe-wrap {
+      width: 100%;
+      transition: width 0.3s;
+    }
+    body.code-mode.sp-mode .code-iframe-wrap {
+      width: 390px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    }
+    .code-iframe {
+      width: 100%;
+      height: calc(100vh - 34px);
+      border: none;
+      display: block;
     }
 
     /* ── SP mode ── */
@@ -494,6 +532,11 @@
   <!-- Preview Bar -->
   <div class="preview-bar">
     <span class="info">田村工業様 — デザイン確認 / 2026.10.18</span>
+    <div class="content-toggle">
+      <button id="btn-design" class="active" onclick="setContent('design')">デザイン</button>
+      <button id="btn-code" onclick="setContent('code')">コード</button>
+    </div>
+    <div class="preview-bar-sep"></div>
     <div class="view-toggle">
       <button id="btn-pc" class="active" onclick="setView('pc')">PC</button>
       <button id="btn-sp" onclick="setView('sp')">SP</button>
@@ -677,6 +720,13 @@
     </div>
   </footer>
 
+  <!-- Code View -->
+  <div class="code-view">
+    <div class="code-iframe-wrap" id="codeIframeWrap">
+      <iframe class="code-iframe" src="index.html"></iframe>
+    </div>
+  </div>
+
   <script>
     const pageNavMap = {
       'top': null,
@@ -692,6 +742,13 @@
       document.body.classList.toggle('sp-mode', mode === 'sp');
       document.getElementById('btn-pc').classList.toggle('active', mode === 'pc');
       document.getElementById('btn-sp').classList.toggle('active', mode === 'sp');
+    }
+
+    function setContent(mode) {
+      const isCode = mode === 'code';
+      document.body.classList.toggle('code-mode', isCode);
+      document.getElementById('btn-design').classList.toggle('active', !isCode);
+      document.getElementById('btn-code').classList.toggle('active', isCode);
     }
 
     function showPage(name) {
