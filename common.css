@@ -492,6 +492,58 @@ img {
   line-height: 29px;
 }
 
+.footer-nav {
+  display: flex;
+  gap: 40px;
+  padding: 32px 0;
+  border-top: 1px solid rgba(36,97,158,0.15);
+  border-bottom: 1px solid rgba(36,97,158,0.15);
+  flex-wrap: wrap;
+}
+.footer-nav__col {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-nav__heading {
+  font-size: 11px;
+  font-weight: 700;
+  color: #24619e;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.footer-nav__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.footer-nav__list a {
+  font-size: 14px;
+  color: #24619e;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  line-height: 1.4;
+}
+.footer-nav__list a::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-top: 1.5px solid #24619e;
+  border-right: 1.5px solid #24619e;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  opacity: 0.45;
+}
+.footer-nav__list a:hover { opacity: 0.6; }
+
 .footer-bottom {
   display: flex;
   gap: 20px;
@@ -652,6 +704,12 @@ body.force-hamburger .nav-collapse-btn {
   }
   .tel-hours > div {
     font-size: 15px;
+  }
+  .footer-nav {
+    gap: 24px 32px;
+  }
+  .footer-nav__col {
+    min-width: calc(50% - 16px);
   }
   .footer-bottom {
     font-size: 12px;
