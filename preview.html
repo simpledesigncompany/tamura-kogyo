@@ -46,6 +46,11 @@
       background: #555;
       color: #fff;
     }
+    .toggle-group {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
     .preview-bar-sep {
       width: 1px;
       height: 14px;
@@ -532,16 +537,20 @@
   <!-- Preview Bar -->
   <div class="preview-bar">
     <span class="info">田村工業様 — デザイン確認 / 2026.11.04更新</span>
-    <span class="hint">確認モード：</span>
-    <div class="content-toggle">
-      <button id="btn-design" class="active" onclick="setContent('design')" title="デザイン画像を確認">デザイン</button>
-      <button id="btn-code" onclick="setContent('code')" title="実際のHTMLの挙動を確認">コード</button>
+    <div class="toggle-group">
+      <span class="hint">確認モード：</span>
+      <div class="content-toggle">
+        <button id="btn-design" class="active" onclick="setContent('design')" title="デザイン画像を確認">デザイン</button>
+        <button id="btn-code" onclick="setContent('code')" title="実際のHTMLの挙動を確認">コード</button>
+      </div>
     </div>
     <div class="preview-bar-sep"></div>
-    <span class="hint">表示：</span>
-    <div class="view-toggle">
-      <button id="btn-pc" class="active" onclick="setView('pc')">PC</button>
-      <button id="btn-sp" onclick="setView('sp')">SP</button>
+    <div class="toggle-group">
+      <span class="hint">表示：</span>
+      <div class="view-toggle">
+        <button id="btn-pc" class="active" onclick="setView('pc')">PC</button>
+        <button id="btn-sp" onclick="setView('sp')">SP</button>
+      </div>
     </div>
     <span>SIMPLE DESIGN株式会社</span>
   </div>
