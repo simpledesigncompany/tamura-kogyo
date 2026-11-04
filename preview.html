@@ -531,12 +531,14 @@
 
   <!-- Preview Bar -->
   <div class="preview-bar">
-    <span class="info">田村工業様 — デザイン確認 / 2026.10.18</span>
+    <span class="info">田村工業様 — デザイン確認 / 2026.11.04更新</span>
+    <span class="hint">確認モード：</span>
     <div class="content-toggle">
-      <button id="btn-design" class="active" onclick="setContent('design')">デザイン</button>
-      <button id="btn-code" onclick="setContent('code')">コード</button>
+      <button id="btn-design" class="active" onclick="setContent('design')" title="デザイン画像を確認">デザイン</button>
+      <button id="btn-code" onclick="setContent('code')" title="実際のHTMLの挙動を確認">コード</button>
     </div>
     <div class="preview-bar-sep"></div>
+    <span class="hint">表示：</span>
     <div class="view-toggle">
       <button id="btn-pc" class="active" onclick="setView('pc')">PC</button>
       <button id="btn-sp" onclick="setView('sp')">SP</button>
@@ -739,9 +741,18 @@
     };
 
     function setView(mode) {
-      document.body.classList.toggle('sp-mode', mode === 'sp');
-      document.getElementById('btn-pc').classList.toggle('active', mode === 'pc');
-      document.getElementById('btn-sp').classList.toggle('active', mode === 'sp');
+      const isSp = mode === 'sp';
+      document.body.classList.toggle('sp-mode', isSp);
+      document.getElementById('btn-pc').classList.toggle('active', !isSp);
+      document.getElementById('btn-sp').classList.toggle('active', isSp);
+      const wrap = document.getElementById('codeIframeWrap');
+      if (isSp) {
+        wrap.style.width = '390px';
+        wrap.style.boxShadow = '0 8px 40px rgba(0,0,0,0.3)';
+      } else {
+        wrap.style.width = '100%';
+        wrap.style.boxShadow = 'none';
+      }
     }
 
     function setContent(mode) {
