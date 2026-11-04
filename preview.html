@@ -321,6 +321,14 @@
     .page.active { display: block; }
     .page img { display: block; width: 100%; height: auto; }
 
+    /* ── PDF View ── */
+    .pdf-view {
+      width: 100%;
+      height: calc(100vh - 34px - 88px);
+      border: none;
+      display: block;
+    }
+
     .works-detail-hint {
       background: #fff;
       padding: 20px 24px;
@@ -570,6 +578,7 @@
         <li><button class="nav-link" id="nav-seekers" onclick="showPage('seekers')">お仕事をお探しの方へ</button></li>
         <li><button class="nav-link" id="nav-companies" onclick="showPage('companies')">企業様へ</button></li>
         <li><button class="nav-link" id="nav-about" onclick="showPage('about')">会社案内</button></li>
+        <li><button class="nav-link" id="nav-logo" onclick="showPage('logo')" style="color:#e06000;">ロゴ案</button></li>
       </ul>
       <div class="btn-group">
         <div class="btn-wrap">
@@ -664,6 +673,11 @@
     <img src="images/contact.jpg" alt="お仕事の相談・登録">
   </div>
 
+  <!-- ロゴ案 -->
+  <div class="page" id="page-logo">
+    <iframe class="pdf-view" src="logo-proposal.pdf"></iframe>
+  </div>
+
   <!-- Footer -->
   <footer class="site-footer">
     <svg class="footer-bg-svg" width="1440" height="473" viewBox="0 0 1440 473" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -747,6 +761,7 @@
       'companies': 'nav-companies',
       'about': 'nav-about',
       'contact': 'nav-contact',
+      'logo': 'nav-logo',
     };
 
     function setView(mode) {
