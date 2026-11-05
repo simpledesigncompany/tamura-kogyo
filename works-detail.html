@@ -295,6 +295,55 @@
         justify-content: center;
       }
     }
+
+    /* ── Seekers Card (sidebar) ── */
+    .seekers-card {
+      display: block;
+      background: #eef5ff;
+      border: 1.5px solid rgba(36,97,158,0.15);
+      border-radius: 16px;
+      padding: 20px;
+      text-decoration: none;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .seekers-card:hover {
+      border-color: rgba(36,97,158,0.4);
+      box-shadow: 0 4px 16px rgba(36,97,158,0.1);
+    }
+    .seekers-card__header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .seekers-card__icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(36,97,158,0.12);
+    }
+    .seekers-card__title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #24619e;
+      line-height: 1.4;
+    }
+    .seekers-card__text {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .seekers-card__cta {
+      font-size: 12px;
+      font-weight: 700;
+      color: #24619e;
+    }
   </style>
   <!-- Google Translate Widget -->
   <style>
@@ -493,6 +542,21 @@
           </a>
           <p class="apply-card__note" data-ja="お電話は平日8:00〜18:00、土曜8:00〜12:00" data-pt="Tel: seg-sex 8:00〜18:00, sáb 8:00〜12:00">お電話は平日8:00〜18:00<br>土曜8:00〜12:00</p>
         </div>
+
+        <!-- Seekers Card -->
+        <a class="seekers-card" href="seekers.html">
+          <div class="seekers-card__header">
+            <div class="seekers-card__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2M12 11v5M9.5 13.5h5" stroke="#24619e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p class="seekers-card__title" data-ja="はじめて応募する方へ" data-pt="Para quem vai se candidatar pela primeira vez">はじめて応募する方へ</p>
+          </div>
+          <p class="seekers-card__text" data-ja="入社までの流れ・持ち物・よくある質問をまとめています" data-pt="Resumimos o processo até a contratação e as perguntas frequentes">入社までの流れ・持ち物・よくある質問をまとめています</p>
+          <span class="seekers-card__cta" data-ja="確認する →" data-pt="Verificar →">確認する →</span>
+        </a>
+
       </aside>
 
     </div>

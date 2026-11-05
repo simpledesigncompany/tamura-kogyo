@@ -274,6 +274,75 @@
         justify-content: center;
       }
     }
+
+    /* ── Seekers Banner ── */
+    .seekers-banner {
+      background: #eef5ff;
+      border-top: 1px solid rgba(36,97,158,0.1);
+      border-bottom: 1px solid rgba(36,97,158,0.1);
+    }
+    .seekers-banner__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .seekers-banner__icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(36,97,158,0.12);
+    }
+    .seekers-banner__content {
+      flex: 1;
+    }
+    .seekers-banner__title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #24619e;
+      margin-bottom: 2px;
+    }
+    .seekers-banner__text {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.5;
+    }
+    .seekers-banner__link {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #24619e;
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 8px 16px;
+      border: 1.5px solid #24619e;
+      border-radius: 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .seekers-banner__link:hover {
+      background: #24619e;
+      color: #fff;
+    }
+    @media (max-width: 768px) {
+      .seekers-banner__inner {
+        padding: 16px 20px;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .seekers-banner__link {
+        margin-left: auto;
+      }
+    }
   </style>
   <!-- Google Translate Widget -->
   <style>
@@ -390,6 +459,22 @@
       <p class="page-header__label" data-ja="現在募集中のお仕事" data-pt="Vagas disponíveis agora">現在募集中のお仕事</p>
       <h1 class="page-header__title" data-ja="お仕事を探す" data-pt="Buscar emprego">お仕事を探す</h1>
       <p class="page-header__lead" data-ja="現在募集中のお仕事をご紹介します。お気軽にお問い合わせください。" data-pt="Apresentamos as vagas disponíveis atualmente. Fique à vontade para entrar em contato.">現在募集中のお仕事をご紹介します。お気軽にお問い合わせください。</p>
+    </div>
+  </div>
+
+  <!-- Seekers Banner -->
+  <div class="seekers-banner">
+    <div class="seekers-banner__inner">
+      <div class="seekers-banner__icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2M12 11v5M9.5 13.5h5" stroke="#24619e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="seekers-banner__content">
+        <p class="seekers-banner__title" data-ja="はじめて応募する方へ" data-pt="Para quem vai se candidatar pela primeira vez">はじめて応募する方へ</p>
+        <p class="seekers-banner__text" data-ja="入社までの流れ・持ち物・よくある質問をまとめています" data-pt="Resumimos o processo até a contratação, o que trazer e as perguntas frequentes">入社までの流れ・持ち物・よくある質問をまとめています</p>
+      </div>
+      <a class="seekers-banner__link" href="seekers.html" data-ja="確認する →" data-pt="Verificar →">確認する →</a>
     </div>
   </div>
 
