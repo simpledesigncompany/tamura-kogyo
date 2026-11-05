@@ -333,7 +333,7 @@
       <a class="nav-logo" href="index.html">
         <img class="logo-img" src="images/logo.png" alt="田村工業ロゴ" translate="no">
         <div class="logo-text" translate="no">
-          <span class="logo-sub" id="logoSub">人材派遣 / アウトソーシング</span>
+          <span class="logo-sub" id="logoSub">人材派遣業・運送業</span>
           <span class="logo-main" id="logoMain">株式会社 田村工業</span>
         </div>
       </a>
@@ -345,17 +345,16 @@
     </div>
     <div class="nav-right" id="navRight">
       <ul class="nav-links">
-        <li><a class="nav-link" href="seekers.html">お仕事をお探しの方へ</a></li>
-        <li><a class="nav-link" href="companies.html">企業様へ</a></li>
-        <li><a class="nav-link" href="about.html">会社案内</a></li>
+        <li><a class="nav-link" href="staffing.html">人材派遣・アウトソーシング</a></li>
+        <li><a class="nav-link" href="moving.html">運送・引越業</a></li>
       </ul>
       <div class="btn-group">
         <div class="btn-wrap">
           <span class="btn-note">\ 日本人の方もどうぞ /</span>
           <a class="btn-primary" href="works.html">お仕事を探す</a>
         </div>
-        <a class="btn-secondary-wrap" href="contact-seekers.html">
-          <span class="btn-secondary-inner">お仕事の相談・登録</span>
+        <a class="btn-secondary-wrap" href="contact.html">
+          <span class="btn-secondary-inner">お問い合わせ</span>
         </a>
         <div class="nav-lang">
           <select id="langSelect" onchange="changeLanguage(this.value)">
@@ -369,7 +368,30 @@
         </div>
       </div>
     </div>
+
+    <!-- SP Hamburger -->
+    <button class="nav-hamburger" id="navHamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- SP Menu Overlay -->
+  <div class="nav-menu-overlay" id="navMenuOverlay">
+    <div class="nav-menu-inner">
+      <button class="nav-menu-close" onclick="toggleMenu(false)" aria-label="閉じる">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 2L18 18M18 2L2 18" stroke="#24619e" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <ul class="nav-menu-links">
+        <li><a href="staffing.html">人材派遣・アウトソーシング</a></li>
+        <li><a href="moving.html">運送・引越業</a></li>
+        <li><a href="works.html">お仕事を探す</a></li>
+        <li><a href="about.html">会社案内</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
 
   <!-- Page Header -->
   <div class="page-header">
@@ -453,7 +475,7 @@
       <aside class="detail-sidebar">
         <div class="apply-card">
           <p class="apply-card__title" data-ja="この求人に応募する" data-pt="Candidatar-se a esta vaga">この求人に応募する</p>
-          <a class="btn-apply" href="contact-seekers.html" data-ja="Webから応募・相談する" data-pt="Candidatar pelo site">Webから応募・相談する</a>
+          <a class="btn-apply" href="contact.html" data-ja="Webから応募・相談する" data-pt="Candidatar pelo site">Webから応募・相談する</a>
           <a class="btn-apply-tel" href="tel:0797722900">
             <svg width="16" height="16" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M27.9465 1.39394L22.056 0.0345961C21.416 -0.112666 20.759 0.221506 20.4984 0.821884L17.7797 7.1655C17.5418 7.72057 17.7004 8.37192 18.1705 8.7514L21.6029 11.5607C19.5639 15.905 16.0012 19.5186 11.5664 21.5972L8.75705 18.1649C8.3719 17.6948 7.72621 17.5362 7.17115 17.7741L0.827526 20.4928C0.221484 20.759 -0.112689 21.416 0.0345736 22.056L1.39392 27.9465C1.53552 28.5582 2.07926 29 2.71928 29C17.2247 29 29 17.2473 29 2.71931C29 2.08494 28.5639 1.53554 27.9465 1.39394Z" fill="#24619E"/>
@@ -526,7 +548,7 @@
       <div class="footer-contact-card">
         <div class="footer-web-contact">
           <div class="contact-heading">Webサイトからのお問い合わせ</div>
-          <a href="contact-seekers.html" class="btn-contact-form">お問い合わせフォームはこちら</a>
+          <a href="contact.html" class="btn-contact-form">お問い合わせフォームはこちら</a>
         </div>
         <div class="footer-tel-contact">
           <div class="contact-heading">お電話からのお問い合わせ</div>
@@ -551,22 +573,21 @@
           <ul class="footer-nav__list">
             <li><a href="seekers.html">お仕事をお探しの方へ</a></li>
             <li><a href="works.html">求人情報</a></li>
-            <li><a href="contact-seekers.html">お仕事の相談・登録</a></li>
+            <li><a href="contact.html">お問い合わせ</a></li>
           </ul>
         </div>
         <div class="footer-nav__col">
-          <div class="footer-nav__heading">企業様へ</div>
+          <div class="footer-nav__heading">サービス案内</div>
           <ul class="footer-nav__list">
-            <li><a href="companies.html">採用支援をお考えの企業様へ</a></li>
-            <li><a href="contact-companies.html">お問い合わせ（企業様）</a></li>
+            <li><a href="staffing.html">人材派遣・アウトソーシング</a></li>
+            <li><a href="moving.html">運送・引越業</a></li>
           </ul>
         </div>
         <div class="footer-nav__col">
           <div class="footer-nav__heading">会社情報</div>
           <ul class="footer-nav__list">
             <li><a href="about.html">会社案内</a></li>
-            <li><a href="business.html">事業内容</a></li>
-            <li><a href="access.html">アクセス</a></li>
+            <li><a href="news.html">お知らせ</a></li>
             <li><a href="margin-rate.html">マージン率の公開</a></li>
           </ul>
         </div>
@@ -574,6 +595,7 @@
 
       <div class="footer-bottom">
         <a href="privacy.html">プライバシーポリシー</a>
+        <a href="site-policy.html">サイトポリシー</a>
         <a href="sitemap.html">サイトマップ</a>
         <span>© 2026 株式会社田村工業 All Rights Reserved.</span>
       </div>

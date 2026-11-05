@@ -3,29 +3,166 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>アクセス | 株式会社田村工業</title>
-  <meta name="description" content="兵庫県宝塚市に拠点を構えています。お気軽にお越しください。">
+  <title>運送・引越業 | 株式会社田村工業</title>
+  <meta name="description" content="関西エリアを中心に、引越し・配送サービスを承ります。法人・個人を問わずお気軽にご相談ください。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="common.css">
   <style>
-    .coming-section {
-      padding: 80px 0 120px;
-      background: #f4f9ff;
+    /* ── Service Section ── */
+    .moving-service-section {
+      padding: 80px 0;
+      background: #f7fbff;
+    }
+    .moving-service-section__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .moving-service-section__header {
+      margin-bottom: 48px;
+    }
+    .moving-service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .moving-service-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 16px rgba(36,97,158,0.07);
+    }
+    .moving-service-card__icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #ffaa00 0%, #ff6868 100%);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 40vh;
+      margin-bottom: 16px;
     }
-    .coming-section__inner {
-      text-align: center;
+    .moving-service-card__title {
+      font-size: 16px;
+      font-weight: 700;
       color: #24619e;
+      line-height: 1.5;
+      margin-bottom: 10px;
     }
-    .coming-section__inner p {
+    .moving-service-card__body {
+      font-size: 14px;
+      line-height: 1.9;
+      color: #444;
+    }
+
+    /* ── Note Text ── */
+    .moving-note {
+      text-align: center;
       font-size: 15px;
-      color: #888;
-      margin-top: 12px;
+      color: #555;
+      margin-top: 36px;
+      line-height: 1.8;
+    }
+
+    /* ── CTA Section ── */
+    .moving-cta {
+      padding: 80px 0;
+      background: #fff;
+    }
+    .moving-cta__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .moving-cta__card {
+      background: linear-gradient(160deg, #e8f4ff 0%, #fff8ee 100%);
+      border-radius: 20px;
+      padding: 48px 56px;
+      display: flex;
+      gap: 40px;
+      align-items: stretch;
+    }
+    .moving-cta__col {
+      flex: 1;
+    }
+    .moving-cta__col + .moving-cta__col {
+      border-left: 1px solid rgba(36,97,158,0.15);
+      padding-left: 40px;
+    }
+    .moving-cta__label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #24619e;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .moving-cta__label::before {
+      content: '▶';
+      color: #ff7632;
+    }
+    .moving-cta__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(193deg, #ffaa00 31%, #ff6868 88%);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 60px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .moving-cta__btn:hover { opacity: 0.85; }
+    .moving-cta__tel {
+      font-size: 32px;
+      font-weight: 700;
+      color: #24619e;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.03em;
+    }
+    .moving-cta__tel:hover { opacity: 0.8; }
+    .moving-cta__hours {
+      font-size: 13px;
+      color: #555;
+      margin-top: 8px;
+    }
+
+    /* ── SP ── */
+    @media (max-width: 768px) {
+      .moving-service-section,
+      .moving-cta {
+        padding: 56px 0;
+      }
+      .moving-service-section__inner,
+      .moving-cta__inner {
+        padding: 0 20px;
+      }
+      .moving-service-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .moving-cta__card {
+        flex-direction: column;
+        padding: 32px 24px;
+        gap: 28px;
+      }
+      .moving-cta__col + .moving-cta__col {
+        border-left: none;
+        border-top: 1px solid rgba(36,97,158,0.15);
+        padding-left: 0;
+        padding-top: 28px;
+      }
+      .moving-cta__tel {
+        font-size: 26px;
+      }
     }
   </style>
   <!-- Google Translate Widget -->
@@ -65,7 +202,7 @@
       <a class="nav-logo" href="index.html">
         <img class="logo-img" src="images/logo.png" alt="田村工業ロゴ" translate="no">
         <div class="logo-text" translate="no">
-          <span class="logo-sub" id="logoSub">人材派遣 / アウトソーシング</span>
+          <span class="logo-sub" id="logoSub">人材派遣業・運送業</span>
           <span class="logo-main" id="logoMain">株式会社 田村工業</span>
         </div>
       </a>
@@ -77,45 +214,127 @@
     </div>
     <div class="nav-right" id="navRight">
       <ul class="nav-links">
-        <li><a class="nav-link" href="seekers.html">お仕事をお探しの方へ</a></li>
-        <li><a class="nav-link" href="companies.html">企業様へ</a></li>
-        <li><a class="nav-link" href="about.html">会社案内</a></li>
+        <li><a class="nav-link" href="staffing.html">人材派遣・アウトソーシング</a></li>
+        <li><a class="nav-link" href="moving.html">運送・引越業</a></li>
       </ul>
       <div class="btn-group">
         <div class="btn-wrap">
           <span class="btn-note">\ 日本人の方もどうぞ /</span>
           <a class="btn-primary" href="works.html">お仕事を探す</a>
         </div>
-        <a class="btn-secondary-wrap" href="contact-seekers.html">
-          <span class="btn-secondary-inner">お仕事の相談・登録</span>
+        <a class="btn-secondary-wrap" href="contact.html">
+          <span class="btn-secondary-inner">お問い合わせ</span>
         </a>
         <div class="nav-lang">
           <select id="langSelect" onchange="changeLanguage(this.value)">
+            <option value="" disabled>言語を選択</option>
             <option value="ja">日本語</option>
             <option value="pt">Português</option>
-            <option value="ko">한국어</option>
+            <option value="es">Español</option>
             <option value="vi">Tiếng Việt</option>
             <option value="ne">नेपाली</option>
+            <option value="my">မြန်မာဘာသာ</option>
             <option value="en">English</option>
           </select>
         </div>
       </div>
     </div>
+
+    <!-- SP Hamburger -->
+    <button class="nav-hamburger" id="navHamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- SP Menu Overlay -->
+  <div class="nav-menu-overlay" id="navMenuOverlay">
+    <div class="nav-menu-inner">
+      <button class="nav-menu-close" onclick="toggleMenu(false)" aria-label="閉じる">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 2L18 18M18 2L2 18" stroke="#24619e" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <ul class="nav-menu-links">
+        <li><a href="staffing.html">人材派遣・アウトソーシング</a></li>
+        <li><a href="moving.html">運送・引越業</a></li>
+        <li><a href="works.html">お仕事を探す</a></li>
+        <li><a href="about.html">会社案内</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
 
   <!-- Page Header -->
   <div class="page-header">
     <div class="page-header__inner">
-      <div class="page-header__label">Access</div>
-      <h1 class="page-header__title">アクセス</h1>
-      <p class="page-header__lead">兵庫県宝塚市に拠点を構えています。お気軽にお越しください。</p>
+      <div class="page-header__label">Moving &amp; Transport</div>
+      <h1 class="page-header__title">引越し・運送のご依頼はこちら</h1>
+      <p class="page-header__lead">関西エリアを中心に、引越し・配送サービスを承ります。法人・個人を問わずお気軽にご相談ください。</p>
     </div>
   </div>
 
-  <!-- Coming Soon -->
-  <section class="coming-section">
-    <div class="coming-section__inner">
-      <p>このページは現在制作中です。</p>
+  <!-- ========== Service Section ========== -->
+  <section class="moving-service-section">
+    <div class="moving-service-section__inner">
+      <div class="moving-service-section__header">
+        <p class="section__label">運送・引越サービス</p>
+        <h2 class="section__title">なんでもお任せください</h2>
+      </div>
+      <div class="moving-service-grid">
+        <div class="moving-service-card">
+          <div class="moving-service-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 2C7.13 2 4 5.13 4 9c0 5.25 7 11 7 11s7-5.75 7-11c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" fill="#fff"/>
+            </svg>
+          </div>
+          <h3 class="moving-service-card__title">引越しをお手伝いします</h3>
+          <p class="moving-service-card__body">家庭の引越しから企業の移転まで、丁寧に対応いたします。</p>
+        </div>
+        <div class="moving-service-card">
+          <div class="moving-service-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="3" width="15" height="13" rx="2" stroke="#fff" stroke-width="2"/>
+              <path d="M16 8h4l3 3v5h-7V8z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="5.5" cy="18.5" r="2.5" stroke="#fff" stroke-width="2"/>
+              <circle cx="18.5" cy="18.5" r="2.5" stroke="#fff" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="moving-service-card__title">荷物を届けたい</h3>
+          <p class="moving-service-card__body">大型家具・機材など、運搬が難しい荷物もお任せください。</p>
+        </div>
+        <div class="moving-service-card">
+          <div class="moving-service-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="moving-service-card__title">その他のご依頼</h3>
+          <p class="moving-service-card__body">記載以外のご依頼もお気軽にご相談ください。</p>
+        </div>
+      </div>
+      <p class="moving-note">上記以外にもお困りごとがございましたらご相談ください</p>
+    </div>
+  </section>
+
+  <!-- ========== CTA Section ========== -->
+  <section class="moving-cta">
+    <div class="moving-cta__inner">
+      <div class="moving-cta__card">
+        <div class="moving-cta__col">
+          <div class="moving-cta__label">Webサイトからのお申し込み</div>
+          <a class="moving-cta__btn" href="contact.html">お問い合わせはこちら</a>
+        </div>
+        <div class="moving-cta__col">
+          <div class="moving-cta__label">お電話からのお申し込み</div>
+          <a href="tel:0797722900" class="moving-cta__tel">
+            <svg width="26" height="26" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+              <path d="M27.9465 1.39394L22.056 0.0345961C21.416 -0.112666 20.759 0.221506 20.4984 0.821884L17.7797 7.1655C17.5418 7.72057 17.7004 8.37192 18.1705 8.7514L21.6029 11.5607C19.5639 15.905 16.0012 19.5186 11.5664 21.5972L8.75705 18.1649C8.3719 17.6948 7.72621 17.5362 7.17115 17.7741L0.827526 20.4928C0.221484 20.759 -0.112689 21.416 0.0345736 22.056L1.39392 27.9465C1.53552 28.5582 2.07926 29 2.71928 29C17.2247 29 29 17.2473 29 2.71931C29 2.08494 28.5639 1.53554 27.9465 1.39394Z" fill="#24619E"/>
+            </svg>
+            0797-72-2900
+          </a>
+          <p class="moving-cta__hours">平日 8:00〜18:00 / 土曜 8:00〜12:00</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -159,7 +378,7 @@
       <div class="footer-contact-card">
         <div class="footer-web-contact">
           <div class="contact-heading">Webサイトからのお問い合わせ</div>
-          <a href="contact-seekers.html" class="btn-contact-form">お問い合わせフォームはこちら</a>
+          <a href="contact.html" class="btn-contact-form">お問い合わせフォームはこちら</a>
         </div>
         <div class="footer-tel-contact">
           <div class="contact-heading">お電話からのお問い合わせ</div>
@@ -184,22 +403,21 @@
           <ul class="footer-nav__list">
             <li><a href="seekers.html">お仕事をお探しの方へ</a></li>
             <li><a href="works.html">求人情報</a></li>
-            <li><a href="contact-seekers.html">お仕事の相談・登録</a></li>
+            <li><a href="contact.html">お問い合わせ</a></li>
           </ul>
         </div>
         <div class="footer-nav__col">
-          <div class="footer-nav__heading">企業様へ</div>
+          <div class="footer-nav__heading">サービス案内</div>
           <ul class="footer-nav__list">
-            <li><a href="companies.html">採用支援をお考えの企業様へ</a></li>
-            <li><a href="contact-companies.html">お問い合わせ（企業様）</a></li>
+            <li><a href="staffing.html">人材派遣・アウトソーシング</a></li>
+            <li><a href="moving.html">運送・引越業</a></li>
           </ul>
         </div>
         <div class="footer-nav__col">
           <div class="footer-nav__heading">会社情報</div>
           <ul class="footer-nav__list">
             <li><a href="about.html">会社案内</a></li>
-            <li><a href="business.html">事業内容</a></li>
-            <li><a href="access.html">アクセス</a></li>
+            <li><a href="news.html">お知らせ</a></li>
             <li><a href="margin-rate.html">マージン率の公開</a></li>
           </ul>
         </div>
@@ -207,6 +425,7 @@
 
       <div class="footer-bottom">
         <a href="privacy.html">プライバシーポリシー</a>
+        <a href="site-policy.html">サイトポリシー</a>
         <a href="sitemap.html">サイトマップ</a>
         <span>© 2026 株式会社田村工業 All Rights Reserved.</span>
       </div>
