@@ -283,9 +283,6 @@ img {
   text-align: center;
   box-sizing: border-box;
 }
-.nav-extra-item { display: none; }
-body.force-hamburger .nav-extra-item { display: block; }
-
 /* ── Page Header ── */
 .page-header {
   background: linear-gradient(160deg, #e8f4ff 0%, #f8fbff 100%);
