@@ -271,6 +271,21 @@ img {
 .nav-menu-lang-btn:hover {
   background: #f5f8ff;
 }
+.nav-menu-sns {
+  margin-bottom: 20px;
+}
+.nav-menu-sns__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #24619e;
+  text-decoration: none;
+  padding: 10px 0;
+  opacity: 0.8;
+}
+.nav-menu-sns__link:hover { opacity: 1; }
 .nav-menu-btns {
   display: flex;
   flex-direction: column;
@@ -380,6 +395,25 @@ img {
   font-size: 16px;
   color: #24619e;
 }
+.footer-sns {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+.footer-sns__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #24619e;
+  border-radius: 50%;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+.footer-sns__link:hover { opacity: 0.75; }
 
 .footer-news {
   border-left: 1px solid rgba(36, 97, 158, 0.6);
