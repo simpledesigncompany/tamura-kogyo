@@ -173,6 +173,7 @@
       <ul class="nav-links">
         <li><a class="nav-link" href="staffing.html">人材派遣・アウトソーシング</a></li>
         <li><a class="nav-link" href="moving.html">運送・引越業</a></li>
+        <li class="nav-extra-item"><a class="nav-link" href="about.html">会社案内</a></li>
       </ul>
       <div class="btn-group">
         <div class="btn-wrap">
@@ -204,18 +205,26 @@
   <!-- SP Menu Overlay -->
   <div class="nav-menu-overlay" id="navMenuOverlay">
     <div class="nav-menu-inner">
-      <button class="nav-menu-close" onclick="toggleMenu(false)" aria-label="閉じる">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 2L18 18M18 2L2 18" stroke="#24619e" stroke-width="2.2" stroke-linecap="round"/>
-        </svg>
-      </button>
       <ul class="nav-menu-links">
         <li><a href="staffing.html">人材派遣・アウトソーシング</a></li>
         <li><a href="moving.html">運送・引越業</a></li>
-        <li><a href="works.html">お仕事を探す</a></li>
         <li><a href="about.html">会社案内</a></li>
-        <li><a href="contact.html">お問い合わせ</a></li>
       </ul>
+      <div class="nav-menu-btns">
+        <a class="btn-primary" href="works.html">お仕事を探す</a>
+        <a class="btn-secondary-wrap" href="contact.html">
+          <span class="btn-secondary-inner">お問い合わせ</span>
+        </a>
+      </div>
+      <div class="nav-menu-lang">
+        <button class="nav-menu-lang-btn active-lang" onclick="changeLanguage('ja')">日本語</button>
+        <button class="nav-menu-lang-btn" onclick="changeLanguage('pt')">Português</button>
+        <button class="nav-menu-lang-btn" onclick="changeLanguage('es')">Español</button>
+        <button class="nav-menu-lang-btn" onclick="changeLanguage('vi')">Tiếng Việt</button>
+        <button class="nav-menu-lang-btn" onclick="changeLanguage('ne')">नेपाली</button>
+        <button class="nav-menu-lang-btn" onclick="changeLanguage('my')">မြန်မာဘာသာ</button>
+        <button class="nav-menu-lang-btn" onclick="changeLanguage('en')">English</button>
+      </div>
     </div>
   </div>
 
